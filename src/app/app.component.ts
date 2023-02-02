@@ -1,6 +1,8 @@
+import { style } from '@angular/animations';
 import { Component } from '@angular/core';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+import { from } from 'rxjs';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -9,62 +11,204 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pdf_make';
-  head = 'Mi Documento PDF';
-  crearPDF() {
-    
 
-    const documentDefinition: any = {
-      content: [
+  json = {
+    title: 'Creacion del formulario',
+    textText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur',
+    footerText: 'Este es el pie de pagina',
+    formulario: {
+      label: {
+        text: 'Apellidos:',
+        ancho: 50,
+        alto: 15,
+      },
+      input: {
+        ancho: 110,
+        ancho2: 180,
+        alto: 15,
+
+      },
+    },
+  }
+
+
+
+
+
+
+  title = 'pdf_make';
+
+  crearPDF() {
+    var docForm: any = {
+      pageSize: 'A4',
+      header: [
         {
-          text: this.head,
+          text: this.json.title,
           style: 'header',
         },
-        {
-          text: 'Este es un ejemplo de cómo crear un PDF con pdfmake en Angular.',
-          style: 'subheader',
-        },
-
-        {
-          alignment: 'justify',
-          columns: [
-            {
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            }
-          ]
-        },
-
       ],
-      styles: {
-        header: {
-          fontSize: 22,
-          bold: true,
-          margin: [0, 0, 0, 10],
-          alignment: 'center',
-        },
-        subheader: {
-          fontSize: 16,
-          bold: true,
-          margin: [0, 20, 0, 10],
-        },
+      footer: function (paginaActual = 0, numeroPaginas = 0) {
+        return [
+          {
+            text: 'Pag ' + paginaActual.toString() + ' de ' + numeroPaginas,
+            alignment: 'right',
+            style: 'footer',
+          }
+        ];
       },
-      defaultStyle: {
-        columnGap: 20
-      }
-    };
-
-    var dd: any = {
 
       content: [
-        'By default paragraphs are stacked one on top of (or actually - below) another. ',
-        'It\'s possible however to split any paragraph (or even the whole document) into columns.\n\n',
-        'Here we go with 2 star-sized columns, with justified text and gap set to 20:\n\n',
+
+        {
+          columns: [
+            {
+              columns: [
+                {
+                  width: this.json.formulario.label.ancho,
+                  height: this.json.formulario.label.alto,
+                  text: this.json.formulario.label.text,
+                  style: 'formLabel'
+                },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0,
+                      y: 0,
+                      w: this.json.formulario.input.ancho,
+                      h: this.json.formulario.input.alto,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow'
+                    }
+                  ],
+                  style: 'formInput',
+                  border: [true, true, true, true],
+                },
+              ],
+              width: '*',
+              text: this.json.textText,
+
+            },
+            {
+              columns: [
+                {
+                  width: this.json.formulario.label.ancho,
+                  height: this.json.formulario.label.alto,
+                  text: this.json.formulario.label.text,
+                  style: 'formLabel'
+                },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0,
+                      y: 0,
+                      w: this.json.formulario.input.ancho,
+                      h: this.json.formulario.input.alto,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow'
+                    }
+                  ],
+                  style: 'formInput',
+                  border: [true, true, true, true],
+                },
+              ],
+              width: '*',
+              text: this.json.textText,
+            },
+            {
+              columns: [
+                {
+                  width: this.json.formulario.label.ancho,
+                  height: this.json.formulario.label.alto,
+                  text: 'Label:',
+                  style: 'formLabel'
+                },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0,
+                      y: 0,
+                      w: this.json.formulario.input.ancho,
+                      h: this.json.formulario.input.alto,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow'
+                    }
+                  ],
+                  style: 'formInput',
+                  border: [true, true, true, true],
+                },
+              ],
+              width: '*',
+              text: this.json.textText,
+            },
+          ],
+          style: 'saltoLinea',
+        },
+        {
+          columns: [
+            {
+              columns: [
+                {
+                  width: this.json.formulario.label.ancho,
+                  height: this.json.formulario.label.alto,
+                  text: 'Label:',
+                  style: 'formLabel'
+                },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0,
+                      y: 0,
+                      w: this.json.formulario.input.ancho2,
+                      h: this.json.formulario.input.alto,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow'
+                    }
+                  ],
+                  style: 'formInput',
+                  border: [true, true, true, true],
+                },
+              ],
+              width: '*',
+              text: this.json.textText,
+            },
+            {
+              columns: [
+                {
+                  width: this.json.formulario.label.ancho,
+                  height: this.json.formulario.label.alto,
+                  text: 'Label:',
+                  style: 'formLabel'
+                },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0,
+                      y: 0,
+                      w: this.json.formulario.input.ancho2,
+                      h: this.json.formulario.input.alto,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow'
+                    }
+                  ],
+                  style: 'formInput',
+                  border: [true, true, true, true],
+                },
+              ],
+              width: '*',
+              text: this.json.textText,
+            },
+          ],
+        },
         {
           alignment: 'justify',
           columns: [
@@ -76,144 +220,78 @@ export class AppComponent {
             }
           ]
         },
-        '\nStar-sized columns have always equal widths, so if we define 3 of those, it\'ll look like this (make sure to scroll to the next page, as we have a couple of more examples):\n\n',
-        {
-          columns: [
-            {
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            }
-          ]
-        },
-        '\nYou can also specify accurate widths for some (or all columns). Let\'s make the first column and the last one narrow and let the layout engine divide remaining space equally between other star-columns:\n\n',
-        {
-          columns: [
-            {
-              width: 90,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              width: '*',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              width: '*',
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            },
-            {
-              width: 90,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-            }
-          ]
-        },
-        '\nWe also support auto columns. They set their widths based on the content:\n\n',
-        {
-          columns: [
-            {
-              width: 'auto',
-              text: 'auto column'
-            },
-            {
-              width: '*',
-              text: 'This is a star-sized column. It should get the remaining space divided by the number of all star-sized columns.'
-            },
-            {
-              width: 50,
-              text: 'this one has specific width set to 50'
-            },
-            {
-              width: 'auto',
-              text: 'another auto column'
-            },
-            {
-              width: '*',
-              text: 'This is a star-sized column. It should get the remaining space divided by the number of all star-sized columns.'
-            },
-          ]
-        },
-        '\nIf all auto columns fit within available width, the table does not occupy whole space:\n\n',
-        {
-          columns: [
-            {
-              width: 'auto',
-              text: 'val1'
-            },
-            {
-              width: 'auto',
-              text: 'val2'
-            },
-            {
-              width: 'auto',
-              text: 'value3'
-            },
-            {
-              width: 'auto',
-              text: 'value 4'
-            },
-          ]
-        },
-        '\nAnother cool feature of pdfmake is the ability to have nested elements. Each column is actually quite similar to the whole document, so we can have inner paragraphs and further divisions, like in the following example:\n\n',
-        {
-          columns: [
-            {
-              width: 100,
-              fontSize: 9,
-              text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Conveniunt quieti extremum severitatem disseretur virtute locum virtus declarant. Greges telos detrimenti persius possint eripuit appellat democrito suscipere existimant. Facere usus levitatibus confirmavit, provincia rutilius libris accommodare valetudinis ignota fugienda arbitramur falsarum commodius. Voluptas summis arbitrarer cognitio temperantiamque, fuit posidonium pro assueverit animos inferiorem, affecti honestum ferreum cum tot nemo ius partes dissensio opinor, tuum intellegunt numeris ignorant, odia diligenter licet, sublatum repellere, maior ficta severa quantum mortem. Aut evertitur impediri vivamus.'
-            },
-            [
-              'As you can see in the document definition - this column is not defined with an object, but an array, which means it\'s treated as an array of paragraphs rendered one below another.',
-              'Just like on the top-level of the document. Let\'s try to divide the remaing space into 3 star-sized columns:\n\n',
-              {
-                columns: [
-                  { text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.' },
-                  { text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.' },
-                  { text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.' },
-                ]
-              }
-            ]
-          ]
-        },
-        '\n\nOh, don\'t forget, we can use everything from styling examples (named styles, custom overrides) here as well.\n\n',
-        'For instance - our next paragraph will use the \'bigger\' style (with fontSize set to 15 and italics - true). We\'ll split it into three columns and make sure they inherit the style:\n\n',
-        {
-          style: 'bigger',
-          columns: [
-            'First column (BTW - it\'s defined as a single string value. pdfmake will turn it into appropriate structure automatically and make sure it inherits the styles',
-            {
-              fontSize: 20,
-              text: 'In this column, we\'ve overriden fontSize to 20. It means the content should have italics=true (inherited from the style) and be a little bit bigger',
-            },
-            {
-              style: 'header',
-              text: 'Last column does not override any styling properties, but applies a new style (header) to itself. Eventually - texts here have italics=true (from bigger) and derive fontSize from the style. OK, but which one? Both styles define it. As we already know from our styling examples, multiple styles can be applied to the element and their order is important. Because \'header\' style has been set after \'bigger\' its fontSize takes precedence over the fontSize from \'bigger\'. This is how it works. You will find more examples in the unit tests.'
-            }
-          ]
-        },
-        '\n\nWow, you\'ve read the whole document! Congratulations :D'
+
+
       ],
       styles: {
+        // fontSize: tamaño de fuente en puntos
+        // font: nombre de la fuente
+        // bold: true/false para negrita
+        // italics: true/false para cursiva
+        // alignment: alineación del texto ('left', 'right', 'center', 'justify')
+        // margin: objeto con las propiedades top, left, bottom, right para definir márgenes
+        // color: color del texto en formato RGB o hexadecimal
+        // fillColor: color de relleno en formato RGB o hexadecimal
+        // characterSpacing: espaciado entre caracteres en puntos
+        // lineHeight: altura de línea
+        // decoration: tipo de subrayado ('underline', 'lineThrough', 'overline')
+
+        //estilo apra el encabezado
         header: {
-          fontSize: 30,
-          bold: true
+          fontSize: 20,
+          bold: true,
+          margin: [0, 10, 0, 10], //[left, top, right, bottom]
+          alignment: 'center',
         },
-        bigger: {
-          fontSize: 15,
-          italics: true
+        footer: {
+          fontSize: 10,
+          margin: [0, 10, 50, 10], //[left, top, right, bottom]
+        },
+        formLabel: {
+          fontSize: 10,
+
+        },
+        formInput: {
+          fontSize: 12,
+          width: '100%',
+          height: 20,
+          margin: [0, 0, 5, 0], //[left, top, right, bottom]
+        },
+        saltoLinea: {
+          margin: [0, 5, 0, 10], //[left, top, right, bottom]
         }
-      },
-      defaultStyle: {
-        columnGap: 20
       }
 
+    };
 
-    }
-    const pdf = pdfMake.createPdf(documentDefinition);
+
+
+    const pdf = pdfMake.createPdf(docForm);
     pdf.open();
 
   }
+}
+
+
+
+
+export interface dataColumn{
+  id: number,
+  form: form[]
+}
+export interface form {
+  label: label,
+  input: input
+}
+
+export interface label {
+  text: string,
+  width?: number,
+  height?: number,
+}
+
+export interface input {
+  placeholder?: string,
+  width?: number,
+  height?: number,
 }

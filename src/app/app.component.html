@@ -1,1 +1,10 @@
-<button (click)="crearPDF()"> crear pdf</button>
+<div class="container">
+    <br><br><br><br><br>
+    <button class="btn btn-primary" (click)="crearPDF()"> crear pdf</button>
+
+    <br><br>
+
+    <label class="form-label">titulo</label>
+    <input type="text" class="form-control" [(ngModel)]="json.title">
+
+</div>
