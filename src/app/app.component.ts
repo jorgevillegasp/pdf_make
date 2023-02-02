@@ -31,8 +31,216 @@ export class AppComponent {
     },
   }
 
-
-
+  dataColumn: dataColumn = {
+    id: 1,
+    form: [
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Correo electrónico",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su correo electrónico",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+      {
+        label: {
+          text: "Nombre",
+          width: 100,
+          height: 40
+        },
+        input: {
+          placeholder: "Ingrese su nombre",
+          width: 200,
+          height: 40
+        }
+      },
+    ]
+  };
+  
 
 
 
@@ -64,9 +272,9 @@ export class AppComponent {
             {
               columns: [
                 {
+                  text: this.json.formulario.label.text,
                   width: this.json.formulario.label.ancho,
                   height: this.json.formulario.label.alto,
-                  text: this.json.formulario.label.text,
                   style: 'formLabel'
                 },
                 {
@@ -263,13 +471,31 @@ export class AppComponent {
       }
 
     };
-
-
+     var cont = 1;
+    /*
+      hay que recorrer por cada FILAS una ves
+      luego recorrerla para ir dibujando las COLUMNAS
+      para terminar pintando el LABEL y INPUT
+    */
+    this.dataColumn.form.forEach(element => {
+      cont++;
+      if(cont <= 3){
+        docForm.content[0].columns[1].columns[cont].text = element.label.text
+      }
+    });
+  
+    // for (var i = 0; i < this.dataColumn.f; i++) {
+    //   var columnIndex = i % 3;
+    //   docDefinition.content[0].columns[columnIndex].text += data[i] + '\n';
+    // }
+  
 
     const pdf = pdfMake.createPdf(docForm);
     pdf.open();
 
   }
+
+
 }
 
 
