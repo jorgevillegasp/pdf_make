@@ -763,14 +763,14 @@ export class AppComponent {
 
   test1() {
     var data = [
-      { label: 'Label 1', input: 'Input 1' }, 
+      { label: 'Label 1', input: 'Input 2' },
       { label: 'Label 2', input: 'Input 2' },
-      { label: 'Label 2', input: 'Input 2' },
-      { label: 'Label 2', input: 'Input 2' },
-      { label: 'Label 2', input: 'Input 2' },
-      { label: 'Label 2', input: 'Input 2' },
-      { label: 'Label 2', input: 'Input 2' },
-      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 3', input: 'Input 2' },
+      { label: 'Label 4', input: 'Input 2' },
+      { label: 'Label 5', input: 'Input 2' },
+      { label: 'Label 6', input: 'Input 2' },
+      { label: 'Label 7', input: 'Input 2' },
+      { label: 'Label 8', input: 'Input 2' },
     ];
 
     var table = {
@@ -778,8 +778,48 @@ export class AppComponent {
       widths: ['*', '*'],
       body: data.map(function (data) {
         return [
-          { text: data.label, style: 'label' }, 
-          { text: data.input, style: 'input' }
+          {
+            stack: [
+              {
+                text: data.label
+              },
+              {
+                canvas: [
+                  {
+                    type: 'rect',
+                    w: 250,
+                    h: 20,
+                    lineWidth: 0.5,
+                    lineColor: 'black',
+                    fillColor: 'yellow',
+                    rx: 10,
+                    ry: 10,
+                  }
+                ],
+              },
+            ]
+          },
+          {
+            stack: [
+              {
+                text: 'label'
+              },
+              {
+                canvas: [
+                  {
+                    type: 'rect',
+                    x: 0,
+                    y: 0,
+                    w: 250,
+                    h: 20,
+                    lineWidth: 0.5,
+                    lineColor: 'black',
+                    fillColor: 'yellow'
+                  }
+                ],
+              },
+            ]
+          },
         ];
       })
     };
@@ -787,7 +827,7 @@ export class AppComponent {
     var pdf = pdfMake.createPdf({
       content: [
         {
-          text:'Titulo'
+          text: 'Titulo'
         },
         {
           table: table,
@@ -804,6 +844,448 @@ export class AppComponent {
         }
       }
     });
+    pdf.open();
+  }
+
+
+  ejemploDeTabla() {
+
+    var starck: any = {
+      stack: [
+        {
+          text: 'label'
+        },
+        {
+          stack: [
+            {
+              text: 'label'
+            },
+            {
+              canvas: [
+                {
+                  type: 'rect',
+                  x: 0,
+                  y: 0,
+                  w: 250,
+                  h: 20,
+                  lineWidth: 0.5,
+                  lineColor: 'black',
+                  fillColor: 'yellow',
+                  rx: 10,
+                  ry: 10
+                }
+              ],
+            },
+          ]
+        },
+      ]
+    };
+    var dd: any = {
+      content: [
+        {
+          style: 'tableExample',
+          table: {
+            widths: ['*', '*'],
+            body: [
+              [
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 250,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 250,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+
+                }
+              ],
+            ]
+          },
+          layout: 'noBorders'
+        },
+        {
+          style: 'tableExample',
+          table: {
+            body: [
+              [
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+
+                }
+              ],
+            ]
+          }
+        },
+        {
+          style: 'tableExample',
+          table: {
+            body: [
+              ['Column 1', 'Column 2', 'Column 3'],
+              [
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                }
+              ],
+              [
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                }
+              ],
+              [
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                }
+              ], [
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                },
+                {
+                  stack: [
+                    {
+                      text: 'label'
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: 150,
+                          h: 20,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                    },
+                  ]
+                }
+              ]
+            ]
+          },
+          layout: 'noBorders'
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        },
+        subheader: {
+          fontSize: 16,
+          bold: true,
+          margin: [0, 10, 0, 5]
+        },
+        tableExample: {
+          margin: [0, 5, 0, 15]
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 13,
+          color: 'black'
+        }
+      },
+      defaultStyle: {
+        // alignment: 'justify'
+      }
+
+    }
+
+    const pdf = pdfMake.createPdf(dd);
     pdf.open();
   }
 
