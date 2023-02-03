@@ -250,299 +250,299 @@ export class AppComponent {
 
   title = 'pdf_make';
 
-  docForm: any = {
-    pageSize: 'A4',
-    header: [
-      {
-        text: this.json.title,
-        style: 'header',
-      },
-    ],
-    footer: function (paginaActual = 0, numeroPaginas = 0) {
-      return [
-        {
-          text: 'Pag ' + paginaActual.toString() + ' de ' + numeroPaginas,
-          alignment: 'right',
-          style: 'footer',
-        }
-      ];
-    },
 
-    content: [
-      {
-        text: 'hola mundo'
-      },
-      //FILA DE 3 COLUMNAS
-      {
-        columns: [
-          {
-            columns: [
-              {
-                text: this.json.formulario.label.text,
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-
-          },
-          {
-            columns: [
-              {
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                text: this.json.formulario.label.text,
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-          },
-          {
-            columns: [
-              {
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                text: 'Label:',
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-          },
-        ],
-        style: 'saltoLinea',
-      },
-      //FILA DE 2 COLUMNAS
-      {
-        columns: [
-          //1 COLUMNA
-          {
-            columns: [
-              {
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                text: 'Label:',
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho2,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-          },
-          //2 COLUMNA
-          {
-            columns: [
-              {
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                text: 'Label:',
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho2,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-          },
-        ],
-      },
-      //FILA DE 2 COLUMNAS
-      {
-        columns: [
-          //1 COLUMNA
-          {
-            columns: [
-              {
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                text: 'Label:',
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho2,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-          },
-          //2 COLUMNA
-          {
-            columns: [
-              {
-                width: this.json.formulario.label.ancho,
-                height: this.json.formulario.label.alto,
-                text: 'Label:',
-                style: 'formLabel'
-              },
-              {
-                canvas: [
-                  {
-                    type: 'rect',
-                    x: 0,
-                    y: 0,
-                    w: this.json.formulario.input.ancho2,
-                    h: this.json.formulario.input.alto,
-                    lineWidth: 0.5,
-                    lineColor: 'black',
-                    fillColor: 'yellow'
-                  }
-                ],
-                style: 'formInput',
-                border: [true, true, true, true],
-              },
-            ],
-            width: '*',
-            text: this.json.textText,
-          },
-        ],
-      },
-      {
-        alignment: 'justify',
-        columns: [
-          {
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-          },
-          {
-            text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
-          }
-        ]
-      },
-
-
-    ],
-    styles: {
-      // fontSize: tamaño de fuente en puntos
-      // font: nombre de la fuente
-      // bold: true/false para negrita
-      // italics: true/false para cursiva
-      // alignment: alineación del texto ('left', 'right', 'center', 'justify')
-      // margin: objeto con las propiedades top, left, bottom, right para definir márgenes
-      // color: color del texto en formato RGB o hexadecimal
-      // fillColor: color de relleno en formato RGB o hexadecimal
-      // characterSpacing: espaciado entre caracteres en puntos
-      // lineHeight: altura de línea
-      // decoration: tipo de subrayado ('underline', 'lineThrough', 'overline')
-
-      //estilo apra el encabezado
-      header: {
-        fontSize: 20,
-        bold: true,
-        margin: [0, 10, 0, 10], //[left, top, right, bottom]
-        alignment: 'center',
-      },
-      footer: {
-        fontSize: 10,
-        margin: [0, 10, 50, 10], //[left, top, right, bottom]
-      },
-      formLabel: {
-        fontSize: 10,
-
-      },
-      formInput: {
-        fontSize: 12,
-        width: '100%',
-        height: 20,
-        margin: [0, 0, 5, 0], //[left, top, right, bottom]
-      },
-      saltoLinea: {
-        margin: [0, 5, 0, 10], //[left, top, right, bottom]
-      }
-    }
-  };
   crearPDF() {
+
+    var docForm: any = {
+      pageSize: 'A4',
+      header: [
+        {
+          text: this.json.title,
+          style: 'header',
+        },
+      ],
+      footer: function (paginaActual = 0, numeroPaginas = 0) {
+        return [
+          {
+            text: 'Pag ' + paginaActual.toString() + ' de ' + numeroPaginas,
+            alignment: 'right',
+            style: 'footer',
+          }
+        ];
+      },
+
+      content: [
+        // {
+        //   text: 'hola mundo'
+        // },
+        // //FILA DE 3 COLUMNAS
+        // {
+        //   columns: [
+        //     {
+        //       columns: [
+        //         {
+        //           text: this.json.formulario.label.text,
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //       text: this.json.textText,
+
+        //     },
+        //     {
+        //       columns: [
+        //         {
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           text: this.json.formulario.label.text,
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //       text: this.json.textText,
+        //     },
+        //     {
+        //       columns: [
+        //         {
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           text: 'Label:',
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //       text: this.json.textText,
+        //     },
+        //   ],
+        //   style: 'saltoLinea',
+        // },
+        // //FILA DE 2 COLUMNAS
+        // {
+        //   columns: [
+        //     //1 COLUMNA
+        //     {
+        //       columns: [
+        //         {
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           text: 'Label:',
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho2,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //     },
+        //     //2 COLUMNA
+        //     {
+        //       columns: [
+        //         {
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           text: 'Label:',
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho2,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //     },
+        //   ],
+        // },
+        // //FILA DE 2 COLUMNAS
+        // {
+        //   columns: [
+        //     //1 COLUMNA
+        //     {
+        //       columns: [
+        //         {
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           text: 'Label:',
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho2,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //       text: this.json.textText,
+        //     },
+        //     //2 COLUMNA
+        //     {
+        //       columns: [
+        //         {
+        //           width: this.json.formulario.label.ancho,
+        //           height: this.json.formulario.label.alto,
+        //           text: 'Label:',
+        //           style: 'formLabel'
+        //         },
+        //         {
+        //           canvas: [
+        //             {
+        //               type: 'rect',
+        //               x: 0,
+        //               y: 0,
+        //               w: this.json.formulario.input.ancho2,
+        //               h: this.json.formulario.input.alto,
+        //               lineWidth: 0.5,
+        //               lineColor: 'black',
+        //               fillColor: 'yellow'
+        //             }
+        //           ],
+        //           style: 'formInput',
+        //           border: [true, true, true, true],
+        //         },
+        //       ],
+        //       width: '*',
+        //       text: this.json.textText,
+        //     },
+        //   ],
+        // },
+        // {
+        //   alignment: 'justify',
+        //   columns: [
+        //     {
+        //       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
+        //     },
+        //     {
+        //       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Malit profecta versatur nomine ocurreret multavit, officiis viveremus aeternum superstitio suspicor alia nostram, quando nostros congressus susceperant concederetur leguntur iam, vigiliae democritea tantopere causae, atilii plerumque ipsas potitur pertineant multis rem quaeri pro, legendum didicisse credere ex maluisset per videtis. Cur discordans praetereat aliae ruinae dirigentur orestem eodem, praetermittenda divinum. Collegisti, deteriora malint loquuntur officii cotidie finitas referri doleamus ambigua acute. Adhaesiones ratione beate arbitraretur detractis perdiscere, constituant hostis polyaeno. Diu concederetur.'
+        //     }
+        //   ]
+        // },
+
+
+      ],
+      styles: {
+        // fontSize: tamaño de fuente en puntos
+        // font: nombre de la fuente
+        // bold: true/false para negrita
+        // italics: true/false para cursiva
+        // alignment: alineación del texto ('left', 'right', 'center', 'justify')
+        // margin: objeto con las propiedades top, left, bottom, right para definir márgenes
+        // color: color del texto en formato RGB o hexadecimal
+        // fillColor: color de relleno en formato RGB o hexadecimal
+        // characterSpacing: espaciado entre caracteres en puntos
+        // lineHeight: altura de línea
+        // decoration: tipo de subrayado ('underline', 'lineThrough', 'overline')
+
+        //estilo apra el encabezado
+        header: {
+          fontSize: 20,
+          bold: true,
+          margin: [0, 10, 0, 10], //[left, top, right, bottom]
+          alignment: 'center',
+        },
+        footer: {
+          fontSize: 10,
+          margin: [0, 10, 50, 10], //[left, top, right, bottom]
+        },
+        formLabel: {
+          fontSize: 10,
+
+        },
+        formInput: {
+          fontSize: 12,
+          width: '100%',
+          height: 20,
+          margin: [0, 0, 5, 0], //[left, top, right, bottom]
+        },
+        saltoLinea: {
+          margin: [0, 5, 0, 10], //[left, top, right, bottom]
+        }
+      }
+    };
 
     //crar una variable donde pueda almacenar la UNION de mi laber con mi input
     let uniones: any = [];
@@ -553,40 +553,49 @@ export class AppComponent {
 
 
     this.dataColumn.form.forEach(elementAt => {
-      uniones.push([
-        {
-          columns: [
-            {
-              text: elementAt.label.text,
-              width: 75,
-              height: 20,
-              style: 'formLabel',
-            },
-            {
-              canvas: [
-                {
-                  type: 'rect',
-                  x: 0,
-                  y: 0,
-                  w: 150,
-                  h: 20,
-                  lineWidth: 0.5,
-                  lineColor: 'black',
-                  fillColor: 'yellow'
-                }
-              ],
-              style: 'formInput',
-              border: [true, true, true, true],
-            },
-          ],
-          width: '*',
-        }
-      ]);
+      uniones.push([{
+        columns: [
+          {
+            text: elementAt.label.text,
+            width: 75,
+            height: 20,
+            style: 'formLabel',
+          },
+          {
+            canvas: [
+              {
+                type: 'rect',
+                x: 0,
+                y: 0,
+                w: 150,
+                h: 20,
+                lineWidth: 0.5,
+                lineColor: 'black',
+                fillColor: 'yellow'
+              }
+            ],
+            style: 'formInput',
+            border: [true, true, true, true],
+          },
+        ],
+        width: '*',
+      }]);
     });
+
+
+
+
+
+
+    let col = [];
+    col.push([{
+      columnas: [uniones[0], uniones[1]]
+    }]);
 
     //HAY QUE CREAR UNA FILA POR CADA DOS COLUMNAS
 
     let createCol = false;
+
     for (let i = 0; i < uniones.length; i++) {
       const element = uniones[i];
 
@@ -598,15 +607,15 @@ export class AppComponent {
         }]);
 
         //insertamos la columna 
-        content.push({columnas});
+        content.push({ columnas });
 
         //limpiamos la columna
         columnas = [];
-        createCol=false;
+        createCol = false;
 
       }
       else {
-        
+
         columnas.push([{
           columns: [element],
         }]);
@@ -616,13 +625,189 @@ export class AppComponent {
 
 
     }
-    console.log(content);
-    this.docForm.content.push(columnas);
-    console.log(this.docForm);
-    const pdf = pdfMake.createPdf(this.docForm);
+
+    console.log(uniones);
+    //docForm.content.push(uniones);
+
+    const pdf = pdfMake.createPdf(docForm);
     pdf.open();
 
   }
+
+
+
+  crearColumna() {
+
+    var columnas = {
+      columns: [
+        {
+          width: this.json.formulario.label.ancho,
+          height: this.json.formulario.label.alto,
+          text: 'Label:',
+        },
+        {
+          canvas: [
+            {
+              type: 'rect',
+              x: 0,
+              y: 0,
+              w: 180,
+              h: 15,
+              lineWidth: 0.5,
+              lineColor: 'black',
+              fillColor: 'yellow'
+            }
+          ],
+          style: 'formInput',
+          border: [true, true, true, true],
+        },
+      ],
+      //width: '*',
+    };
+
+    var columnaGlobal = {
+      columns: [
+        //1 COLUMNA
+        columnas,
+        //2 COLUMNA
+        columnas
+      ]
+    };
+
+    var docForm: any = {
+      pageSize: 'A4',
+
+      content: [
+        //1
+        {
+          columns: [
+            {
+              columns: [
+                {
+                  columns: [
+                    {
+                      width: this.json.formulario.label.ancho,
+                      height: this.json.formulario.label.alto,
+                      text: 'Label:',
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: this.json.formulario.input.ancho2,
+                          h: this.json.formulario.input.alto,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                      style: 'formInput',
+                      border: [true, true, true, true],
+                    },
+                  ],
+                  width: '*',
+                },
+                {
+                  columns: [
+                    {
+                      width: this.json.formulario.label.ancho,
+                      height: this.json.formulario.label.alto,
+                      text: 'Label:',
+                    },
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0,
+                          y: 0,
+                          w: this.json.formulario.input.ancho2,
+                          h: this.json.formulario.input.alto,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow'
+                        }
+                      ],
+                      style: 'formInput',
+                      border: [true, true, true, true],
+                    },
+                  ],
+                  width: '*',
+                }
+              ]
+            }
+          ]
+        },
+        //2
+        {
+          columns: [
+            {
+              columns: [
+                columnas,
+              ]
+            },
+
+          ]
+        },
+      ]
+    };
+
+    console.log(columnas);
+
+    const pdf = pdfMake.createPdf(docForm);
+    pdf.open();
+
+  }
+
+
+  test1() {
+    var data = [
+      { label: 'Label 1', input: 'Input 1' }, 
+      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 2', input: 'Input 2' },
+      { label: 'Label 2', input: 'Input 2' },
+    ];
+
+    var table = {
+      headerRows: 0,
+      widths: ['*', '*'],
+      body: data.map(function (data) {
+        return [
+          { text: data.label, style: 'label' }, 
+          { text: data.input, style: 'input' }
+        ];
+      })
+    };
+
+    var pdf = pdfMake.createPdf({
+      content: [
+        {
+          text:'Titulo'
+        },
+        {
+          table: table,
+          layout: 'lightHorizontalLines'
+        }
+      ],
+      styles: {
+        label: {
+          fontSize: 12,
+          bold: true
+        },
+        input: {
+          fontSize: 12
+        }
+      }
+    });
+    pdf.open();
+  }
+
+
 
 
 }
