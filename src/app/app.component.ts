@@ -787,6 +787,8 @@ export class AppComponent {
                 canvas: [
                   {
                     type: 'rect',
+                    x: 0,
+                    y: 0,
                     w: 250,
                     h: 20,
                     lineWidth: 0.5,
