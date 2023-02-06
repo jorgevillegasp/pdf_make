@@ -1,0 +1,289 @@
+{
+  "data": [
+    {
+      "id": 76845561,
+      "columns": [
+        {
+          "id": 4153944,
+          "settings": {
+            "width": 33.34,
+            "widthPX": 529.265625
+          },
+          "table": {
+            "tableId": 14,
+            "tableName": "solicitud",
+            "fieldId": 31,
+            "fieldName": "nro_solicitud"
+          },
+          "forms": {
+            "id": "formly_2_text_5512222_0",
+            "key": "5512222",
+            "type": "text",
+            "defaultValue": "",
+            "props": {
+              "label": "N° de solicitud",
+              "description": "",
+              "disabled": false,
+              "placeholder": "",
+              "readonly": false,
+              "required": true,
+              "pattern": null,
+              "rows": null
+            },
+            "messages": {
+              "pattern": null,
+              "required": null,
+              "min": null,
+              "max": null,
+              "minLength": null,
+              "maxLength": null,
+              "email": null
+            },
+            "file": {
+              "fomrData": ""
+            }
+          },
+          "control": {
+            "id": "3",
+            "name": "Input",
+            "icon": "fa-solid fa-font",
+            "code": "TEXT",
+            "config": {
+              "key": "input",
+              "type": "text",
+              "props": {
+                "label": "Texto",
+                "required": false,
+                "placeholder": "",
+                "disabled": false
+              }
+            },
+            "clasification": "Entrada",
+            "clasificationId": 12,
+            "createdAt": "2022-12-13T20:38:18.546Z",
+            "typeFields": [
+              {
+                "id": 4
+              },
+              {
+                "id": 6
+              },
+              {
+                "id": 3
+              }
+            ]
+          }
+        },
+        {
+          "id": 86347708,
+          "settings": {
+            "width": 33.34,
+            "widthPX": 529.265625
+          },
+          "table": {
+            "tableId": 14,
+            "tableName": "solicitud",
+            "fieldId": 32,
+            "fieldName": "tipo_solicitud"
+          },
+          "forms": {
+            "id": "formly_4_text_38052760_0",
+            "key": "38052760",
+            "type": "text",
+            "defaultValue": "",
+            "props": {
+              "label": "Tipo de solicitud",
+              "description": "",
+              "disabled": false,
+              "placeholder": "",
+              "readonly": false,
+              "required": true,
+              "pattern": null,
+              "rows": null
+            },
+            "messages": {
+              "pattern": null,
+              "required": null,
+              "min": null,
+              "max": null,
+              "minLength": null,
+              "maxLength": null,
+              "email": null
+            },
+            "file": {
+              "fomrData": ""
+            }
+          },
+          "control": {
+            "id": 3,
+            "name": "Input",
+            "icon": "fa-solid fa-font",
+            "code": "TEXT",
+            "config": {
+              "key": "input",
+              "type": "text",
+              "props": {
+                "label": "Texto",
+                "required": false,
+                "placeholder": "",
+                "disabled": false
+              }
+            },
+            "clasification": "Entrada",
+            "clasificationId": 12,
+            "createdAt": "2022-12-13T20:38:18.546Z",
+            "typeFields": [
+              {
+                "id": 4
+              },
+              {
+                "id": 6
+              },
+              {
+                "id": 3
+              }
+            ]
+          }
+        },
+        {
+          "id": 29054696,
+          "settings": {
+            "width": 33.34,
+            "widthPX": 529.265625
+          },
+          "table": {
+            "tableId": 14,
+            "tableName": "solicitud",
+            "fieldId": 33,
+            "fieldName": "estado"
+          },
+          "forms": {
+            "id": "formly_6_text_78512738_0",
+            "key": "78512738",
+            "type": "text",
+            "defaultValue": "",
+            "props": {
+              "label": "Estado",
+              "description": "",
+              "disabled": false,
+              "placeholder": "",
+              "readonly": false,
+              "required": true,
+              "pattern": null,
+              "rows": null
+            },
+            "messages": {
+              "pattern": null,
+              "required": null,
+              "min": null,
+              "max": null,
+              "minLength": null,
+              "maxLength": null,
+              "email": null
+            },
+            "file": {
+              "fomrData": ""
+            }
+          },
+          "control": {
+            "id": 3,
+            "name": "Input",
+            "icon": "fa-solid fa-font",
+            "code": "TEXT",
+            "config": {
+              "key": "input",
+              "type": "text",
+              "props": {
+                "label": "Texto",
+                "required": false,
+                "placeholder": "",
+                "disabled": false
+              }
+            },
+            "clasification": "Entrada",
+            "clasificationId": 12,
+            "createdAt": "2022-12-13T20:38:18.546Z",
+            "typeFields": [
+              {
+                "id": 4
+              },
+              {
+                "id": 6
+              },
+              {
+                "id": 3
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 12954193,
+      "columns": [
+        {
+          "id": 39990800,
+          "settings": {
+            "width": 100,
+            "widthPX": 397
+          },
+          "table": {
+            "tableId": 14,
+            "tableName": "solicitud",
+            "fieldId": 34,
+            "fieldName": "fecha_solicitud"
+          },
+          "forms": {
+            "id": "formly_8_custom-datepicker_46732785_0",
+            "key": "46732785",
+            "type": "custom-datepicker",
+            "defaultValue": "",
+            "props": {
+              "label": "Datepicker",
+              "description": "",
+              "disabled": false,
+              "placeholder": "",
+              "readonly": false,
+              "required": true,
+              "rows": null
+            },
+            "date": {
+              "minDate": null,
+              "maxDate": null
+            },
+            "messages": {
+              "required": null
+            },
+            "file": {
+              "fomrData": ""
+            }
+          },
+          "control": {
+            "id": 6,
+            "name": "Datepicker",
+            "icon": "fa-solid fa-calendar-days",
+            "code": "DATE",
+            "config": {
+              "key": "Datepicker",
+              "type": "custom-datepicker",
+              "props": {
+                "label": "Datepicker",
+                "required": false,
+                "placeholder": "",
+                "disabled": false
+              }
+            },
+            "clasification": "Entrada",
+            "clasificationId": 12,
+            "createdAt": "2022-12-13T20:38:18.555Z",
+            "typeFields": [
+              {
+                "id": 5
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
