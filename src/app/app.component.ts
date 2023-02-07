@@ -23,7 +23,10 @@ export class AppComponent {
     var dd: any = {
       content: [
 
-        { text: 'Haciendo uso de varias tablas sin depender de una' },
+        { 
+          text: 'Haciendo uso de varias tablas sin depender de una',
+          style: 'header'
+        },
         Datos.pdfData.data.forms.map(function (form) {
           if(form.columns.length == 1){
             return {
@@ -33,7 +36,10 @@ export class AppComponent {
                   [
                     {
                       stack: [
-                        form.columns[0].label,
+                        {
+                          text: form.columns[0].label,
+                          style: 'label',
+                        },
                         {
                           canvas: [
                             {
@@ -51,7 +57,8 @@ export class AppComponent {
                   ],
                 ]
               },
-              layout: 'noBorders'
+              layout: 'noBorders',
+              style: 'form',
             };
           }
           else if(form.columns.length == 2){
@@ -62,7 +69,10 @@ export class AppComponent {
                   [
                     {
                       stack: [
-                        form.columns[0].label,
+                        {
+                          text: form.columns[0].label,
+                          style: 'label',
+                        },
                         {
                           canvas: [
                             {
@@ -79,7 +89,10 @@ export class AppComponent {
                     },
                     {
                       stack: [
-                        form.columns[1].label,
+                        {
+                          text: form.columns[1].label,
+                          style: 'label',
+                        },
                         {
                           canvas: [
                             {
@@ -97,7 +110,8 @@ export class AppComponent {
                   ],
                 ]
               },
-              layout: 'noBorders'
+              layout: 'noBorders',
+              style: 'form',
             };
           }else if(form.columns.length == 3){
             return {
@@ -107,7 +121,10 @@ export class AppComponent {
                   [
                     {
                       stack: [
-                        form.columns[0].label,
+                        {
+                          text: form.columns[0].label,
+                          style: 'label',
+                        },
                         {
                           canvas: [
                             {
@@ -124,7 +141,10 @@ export class AppComponent {
                     },
                     {
                       stack: [
-                        form.columns[1].label,
+                        {
+                          text: form.columns[1].label,
+                          style: 'label',
+                        },
                         {
                           canvas: [
                             {
@@ -141,7 +161,10 @@ export class AppComponent {
                     },
                     {
                       stack: [
-                        form.columns[2].label,
+                        {
+                          text: form.columns[2].label,
+                          style: 'label',
+                        },
                         {
                           canvas: [
                             {
@@ -159,7 +182,8 @@ export class AppComponent {
                   ],
                 ]
               },
-              layout: 'noBorders'
+              layout: 'noBorders',
+              style: 'form',
             };
           }
           return;
@@ -173,6 +197,14 @@ export class AppComponent {
           fontSize: 18,
           bold: true,
           margin: [0, 0, 0, 10]
+        },
+
+        label: {
+          fontSize: 11,
+          margin: [0, 0, 0, 3] //[izquierda, superior, derecha, inferior].
+        },
+        form: {
+          margin: [0, 7, 0, 0] //[izquierda, superior, derecha, inferior].
         },
         subheader: {
           fontSize: 16,
