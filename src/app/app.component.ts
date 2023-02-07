@@ -14,13 +14,6 @@ import { column } from './interfaces/pdf.interface';
 })
 export class AppComponent {
 
-
- 
-
-
-
-
-
   title = 'pdf_make';
 
 
@@ -765,7 +758,6 @@ export class AppComponent {
   }
 
 
-
   prueba() {
     const docDefinition = {
       content: [
@@ -793,17 +785,69 @@ export class AppComponent {
     pdfMake.createPdf(docDefinition).open();
   }
 
-
-
-
   tabla() {
 
     var table = {
       headerRows: 0,
       widths: ['*', '*', '*'],
       body: Datos.pdfData.data.forms.map(function (data) {
-        console.log(data.columns);
-          if (data.columns.length == 2) {
+        console.log(data.columns.length);
+        if (data.columns.length == 1) {
+          return [
+            {
+              stack: [
+                { text: data.columns[0].label },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0, y: 0, w: 150, h: 20,
+                      rx: 10, ry: 10,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow',
+                    }
+                  ],
+                },
+              ]
+            },
+            {
+              stack: [
+                { text: data.columns[0].label },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0, y: 0, w: 150, h: 20,
+                      rx: 10, ry: 10,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow',
+                    }
+                  ],
+                },
+              ]
+            },
+            {
+              stack: [
+                { text: data.columns[0].label },
+                {
+                  canvas: [
+                    {
+                      type: 'rect',
+                      x: 0, y: 0, w: 150, h: 20,
+                      rx: 10, ry: 10,
+                      lineWidth: 0.5,
+                      lineColor: 'black',
+                      fillColor: 'yellow',
+                    }
+                  ],
+                },
+              ]
+            },
+          ];
+        }
+        else if (data.columns.length == 2) {
           return [
             {
               stack: [

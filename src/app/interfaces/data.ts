@@ -17,6 +17,17 @@ export class Datos{
 								width: 100
 							}
 						},
+					],
+				},
+				{
+					columns: [
+						{
+							label: 'Nombre',
+							input: {
+								height: 300,
+								width: 100
+							}
+						},
 						{
 							label: 'Apellido',
 							input: {
