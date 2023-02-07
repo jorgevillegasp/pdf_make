@@ -4,8 +4,9 @@ import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { elementAt, from } from 'rxjs';
 import { Datos } from './interfaces/data';
-import { column } from './interfaces/pdf.interface';
+import { Column, Form } from './interfaces/pdf.interface';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
+
 
 @Component({
   selector: 'app-root',
@@ -785,7 +786,156 @@ export class AppComponent {
     pdfMake.createPdf(docDefinition).open();
   }
 
+  public datoTabla(columns: Column[]) {
+
+    //hayq ue crear una tabla para cada cantidad de columnas
+    let cantidad = columns.length;
+
+    if (cantidad == 1) {
+      var col1 = {
+        table: {
+          widths: ['*'],
+          body: [
+            [
+              {
+                stack: [
+                  'label',
+                  {
+                    canvas: [
+                      {
+                        type: 'rect',
+                        x: 0, y: 0, w: 512, h: 20,
+                        rx: 10, ry: 10,
+                        lineWidth: 0.5,
+                        lineColor: 'black',
+                        fillColor: 'yellow',
+                      }
+                    ],
+                  }
+                ]
+              },
+            ],
+          ]
+        },
+        layout: 'noBorders'
+      };
+    }
+
+    if (cantidad == 2) {
+      var col2 = {
+        table: {
+          widths: ['*', '*'],
+          body: [
+            [
+              {
+                stack: [
+                  'label',
+                  {
+                    canvas: [
+                      {
+                        type: 'rect',
+                        x: 0, y: 0, w: 250, h: 20,
+                        rx: 10, ry: 10,
+                        lineWidth: 0.5,
+                        lineColor: 'black',
+                        fillColor: 'yellow',
+                      }
+                    ],
+                  }
+                ]
+              },
+              {
+                stack: [
+                  'label',
+                  {
+                    canvas: [
+                      {
+                        type: 'rect',
+                        x: 0, y: 0, w: 250, h: 20,
+                        rx: 10, ry: 10,
+                        lineWidth: 0.5,
+                        lineColor: 'black',
+                        fillColor: 'yellow',
+                      }
+                    ],
+                  }
+                ]
+              },
+            ],
+          ]
+        },
+        layout: 'noBorders'
+      };
+    }
+
+    if (cantidad == 3) {
+      var col3 = {
+        table: {
+          widths: ['*', '*', '*'],
+          body: [
+            [
+              {
+                stack: [
+                  'label',
+                  {
+                    canvas: [
+                      {
+                        type: 'rect',
+                        x: 0, y: 0, w: 163, h: 20,
+                        rx: 10, ry: 10,
+                        lineWidth: 0.5,
+                        lineColor: 'black',
+                        fillColor: 'yellow',
+                      }
+                    ],
+                  }
+                ]
+              },
+              {
+                stack: [
+                  'label',
+                  {
+                    canvas: [
+                      {
+                        type: 'rect',
+                        x: 0, y: 0, w: 163, h: 20,
+                        rx: 10, ry: 10,
+                        lineWidth: 0.5,
+                        lineColor: 'black',
+                        fillColor: 'yellow',
+                      }
+                    ],
+                  }
+                ]
+              },
+              {
+                stack: [
+                  'label',
+                  {
+                    canvas: [
+                      {
+                        type: 'rect',
+                        x: 0, y: 0, w: 163, h: 20,
+                        rx: 10, ry: 10,
+                        lineWidth: 0.5,
+                        lineColor: 'black',
+                        fillColor: 'yellow',
+                      }
+                    ],
+                  }
+                ]
+              },
+            ],
+          ]
+        },
+        layout: 'noBorders'
+      };
+    }
+
+  }
+
   tabla() {
+
 
     var table = {
       headerRows: 0,
@@ -795,55 +945,94 @@ export class AppComponent {
         if (data.columns.length == 1) {
           return [
             {
-              stack: [
-                { text: data.columns[0].label },
-                {
-                  canvas: [
+
+              table: {
+                widths: ['*'],
+                body: [
+                  [
                     {
-                      type: 'rect',
-                      x: 0, y: 0, w: 150, h: 20,
-                      rx: 10, ry: 10,
-                      lineWidth: 0.5,
-                      lineColor: 'black',
-                      fillColor: 'yellow',
-                    }
+                      stack: [
+                        data.columns[0].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 150, h: 20,
+                              //x: 0, y: 0, w: 512, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
                   ],
-                },
-              ]
+                ]
+              },
+              layout: 'noBorders'
+
             },
             {
-              stack: [
-                { text: data.columns[0].label },
-                {
-                  canvas: [
+
+              table: {
+                widths: ['*'],
+                body: [
+                  [
                     {
-                      type: 'rect',
-                      x: 0, y: 0, w: 150, h: 20,
-                      rx: 10, ry: 10,
-                      lineWidth: 0.5,
-                      lineColor: 'black',
-                      fillColor: 'yellow',
-                    }
+                      stack: [
+                        data.columns[0].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 150, h: 20,
+                              //x: 0, y: 0, w: 512, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
                   ],
-                },
-              ]
+                ]
+              },
+              layout: 'noBorders'
+
             },
             {
-              stack: [
-                { text: data.columns[0].label },
-                {
-                  canvas: [
+
+              table: {
+                widths: ['*'],
+                body: [
+                  [
                     {
-                      type: 'rect',
-                      x: 0, y: 0, w: 150, h: 20,
-                      rx: 10, ry: 10,
-                      lineWidth: 0.5,
-                      lineColor: 'black',
-                      fillColor: 'yellow',
-                    }
+                      stack: [
+                        data.columns[0].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 150, h: 20,
+                              //x: 0, y: 0, w: 512, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
                   ],
-                },
-              ]
+                ]
+              },
+              layout: 'noBorders'
+
             },
           ];
         }
@@ -1165,7 +1354,142 @@ export class AppComponent {
           },
           layout: 'noBorders',
         },
+        { text: 'Haciendo uso de varias tablas sin depender de una' },
+        {
+          table: {
+            widths: ['*'],
+            body: [
+              [
+                {
+                  stack: [
+                    'label',
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0, y: 0, w: 512, h: 20,
+                          rx: 10, ry: 10,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow',
+                        }
+                      ],
+                    }
+                  ]
+                },
+              ],
+            ]
+          },
+          layout: 'noBorders'
+        },
+        {
+          table: {
+            widths: ['*', '*'],
+            body: [
+              [
+                {
+                  stack: [
+                    'label',
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0, y: 0, w: 250, h: 20,
+                          rx: 10, ry: 10,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow',
+                        }
+                      ],
+                    }
+                  ]
+                },
+                {
+                  stack: [
+                    'label',
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0, y: 0, w: 250, h: 20,
+                          rx: 10, ry: 10,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow',
+                        }
+                      ],
+                    }
+                  ]
+                },
+              ],
+            ]
+          },
+          layout: 'noBorders'
 
+        },
+        {
+          table: {
+            widths: ['*', '*', '*'],
+            body: [
+              [
+                {
+                  stack: [
+                    'label',
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0, y: 0, w: 163, h: 20,
+                          rx: 10, ry: 10,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow',
+                        }
+                      ],
+                    }
+                  ]
+                },
+                {
+                  stack: [
+                    'label',
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0, y: 0, w: 163, h: 20,
+                          rx: 10, ry: 10,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow',
+                        }
+                      ],
+                    }
+                  ]
+                },
+                {
+                  stack: [
+                    'label',
+                    {
+                      canvas: [
+                        {
+                          type: 'rect',
+                          x: 0, y: 0, w: 163, h: 20,
+                          rx: 10, ry: 10,
+                          lineWidth: 0.5,
+                          lineColor: 'black',
+                          fillColor: 'yellow',
+                        }
+                      ],
+                    }
+                  ]
+                },
+              ],
+            ]
+          },
+          layout: 'noBorders'
+
+
+        },
 
 
       ],
@@ -1211,44 +1535,91 @@ export class AppComponent {
                 {
                   table: {
                     body: [
-                      Datos.pdfData.data.forms.map( data => {text: data.columns.length}),
-                      // Datos.pdfData.data.forms.map(function (data) {
-                      //   //console.log(data.columns.length);
-                      //   if (data.columns.length == 1) {
-                      //     return [
-                      //       {
-                      //         table: {
-                      //           widths: ['*'],
-                      //           body: [
-                      //             [
-                      //               //data.columns(function(column) { }),
-                      //               {
-                      //                 stack: [
-                      //                   'label',
-                      //                   {
-                      //                     canvas: [
-                      //                       {
-                      //                         type: 'rect',
-                      //                         x: 0, y: 0, w: 512, h: 20,
-                      //                         rx: 10, ry: 10,
-                      //                         lineWidth: 0.5,
-                      //                         lineColor: 'black',
-                      //                         fillColor: 'yellow',
-                      //                       }
-                      //                     ],
-                      //                   }
-                      //                 ]
-                      //               },
-                      //             ],
-                      //           ]
-                      //         },
-                      //         layout: 'noBorders'
-                      //       },
+                      Datos.pdfData.data.forms.map(function (data) {
 
-                      //     ];
-                      //   };
-                      //   return;
-                      // }),
+                        if (data.columns.length == 1) {
+                          return [
+                            {
+                              table: {
+                                widths: ['*'],
+                                body: [
+                                  [
+                                    //data.columns(function(column) { }),
+                                    {
+                                      stack: [
+                                        'label',
+                                        {
+                                          canvas: [
+                                            {
+                                              type: 'rect',
+                                              x: 0, y: 0, w: 512, h: 20,
+                                              rx: 10, ry: 10,
+                                              lineWidth: 0.5,
+                                              lineColor: 'black',
+                                              fillColor: 'yellow',
+                                            }
+                                          ],
+                                        }
+                                      ]
+                                    },
+                                  ],
+                                ]
+                              },
+                              layout: 'noBorders'
+                            },
+
+                          ];
+                        }
+                        else if (data.columns.length == 2) {
+                          return [
+                            {
+                              table: {
+                                widths: ['*', '*'],
+                                body: [
+                                  [
+                                    {
+                                      stack: [
+                                        'label',
+                                        {
+                                          canvas: [
+                                            {
+                                              type: 'rect',
+                                              x: 0, y: 0, w: 250, h: 20,
+                                              rx: 10, ry: 10,
+                                              lineWidth: 0.5,
+                                              lineColor: 'black',
+                                              fillColor: 'yellow',
+                                            }
+                                          ],
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      stack: [
+                                        'label',
+                                        {
+                                          canvas: [
+                                            {
+                                              type: 'rect',
+                                              x: 0, y: 0, w: 250, h: 20,
+                                              rx: 10, ry: 10,
+                                              lineWidth: 0.5,
+                                              lineColor: 'black',
+                                              fillColor: 'yellow',
+                                            }
+                                          ],
+                                        }
+                                      ]
+                                    },
+                                  ],
+                                ]
+                              },
+                              layout: 'noBorders'
+                            },
+                          ];
+                        }
+                        return;
+                      }),
                       [
                         {
                           table: {
@@ -1431,6 +1802,188 @@ export class AppComponent {
 
     pdfMake.createPdf(dd).open();
   }
+
+  comoDeberiaMostrarseTest1() {
+
+    var dd: any = {
+      content: [
+
+        { text: 'Haciendo uso de varias tablas sin depender de una' },
+        Datos.pdfData.data.forms.map(function (form) {
+          if(form.columns.length == 1){
+            return {
+              table: {
+                widths: ['*'],
+                body: [
+                  [
+                    {
+                      stack: [
+                        form.columns[0].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 512, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
+                  ],
+                ]
+              },
+              layout: 'noBorders'
+            };
+          }
+          else if(form.columns.length == 2){
+            return {
+              table: {
+                widths: ['*','*'],
+                body: [
+                  [
+                    {
+                      stack: [
+                        form.columns[0].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 250, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
+                    {
+                      stack: [
+                        form.columns[1].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 250, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
+                  ],
+                ]
+              },
+              layout: 'noBorders'
+            };
+          }else if(form.columns.length == 3){
+            return {
+              table: {
+                widths: ['*','*','*'],
+                body: [
+                  [
+                    {
+                      stack: [
+                        form.columns[0].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 163, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
+                    {
+                      stack: [
+                        form.columns[1].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 163, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
+                    {
+                      stack: [
+                        form.columns[2].label,
+                        {
+                          canvas: [
+                            {
+                              type: 'rect',
+                              x: 0, y: 0, w: 163, h: 20,
+                              rx: 10, ry: 10,
+                              lineWidth: 0.5,
+                              lineColor: 'black',
+                              fillColor: 'yellow',
+                            }
+                          ],
+                        }
+                      ]
+                    },
+                  ],
+                ]
+              },
+              layout: 'noBorders'
+            };
+          }
+          return;
+        }),
+        
+
+
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 0, 0, 10]
+        },
+        subheader: {
+          fontSize: 16,
+          bold: true,
+          margin: [0, 10, 0, 5]
+        },
+        tableExample: {
+          margin: [0, 5, 0, 15]
+        },
+        tableHeader: {
+          bold: true,
+          fontSize: 13,
+          color: 'black'
+        }
+      },
+      defaultStyle: {
+        // alignment: 'justify'
+      }
+
+    }
+    console.log(dd);
+
+    pdfMake.createPdf(dd).open();
+  }
+
+  
 
 
 }

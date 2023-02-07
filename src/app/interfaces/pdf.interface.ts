@@ -1,25 +1,25 @@
 export interface pdf{
     title: string;
     footer: string;
-    data: data;
+    data: Data;
     
 }
 
-export interface data{
-    forms: form[];
+export interface Data{
+    forms: Form[];
 }
-export interface form{
+export interface Form{
     //la cantidad de columnas que puede tener 
     //no debe de ser mas de 3 registros
-    columns: column[]; //1 | 2 | 3
+    columns: Column[]; //1 | 2 | 3
 }
 
-export interface column{
+export interface Column{
     label: string;
-    input: input;
+    input: Input;
 }
 
-export interface input{
+export interface Input{
     height?: number;
     width?: number;
 }

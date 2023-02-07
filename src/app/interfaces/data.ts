@@ -1,5 +1,5 @@
 
-import { pdf, data, form, column, input } from './pdf.interface';
+import { pdf, Data, Form, Column, Input } from './pdf.interface';
 
 export class Datos{
 
