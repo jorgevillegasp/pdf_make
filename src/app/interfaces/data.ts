@@ -177,6 +177,19 @@ export class Datos {
 								}
 							],
 						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'Numero cedula',
+								},
+								{
+									typeField: 'input',
+									label: 'Telefono',
+								},
+							],
+							
+						},
 						
 						{
 							columns: [
@@ -198,7 +211,7 @@ export class Datos {
 							columns: [
 								{
 									typeField: 'input',
-									label: 'direccion',
+									label: 'Direccion',
 								},
 							],
 						},
