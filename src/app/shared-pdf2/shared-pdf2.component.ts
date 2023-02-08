@@ -31,8 +31,11 @@ export class SharedPdf2Component implements OnInit {
       },
       content: [
 
+
         Datos.pdfData2.data.section.map(function (section) {
           return [
+            
+            
             {
               text: section.title,
               style: 'titleSection'
@@ -43,6 +46,9 @@ export class SharedPdf2Component implements OnInit {
             },
             section.fila.map(function (fila) {
               console.log(fila.columns.length);
+
+            
+
               if (fila.columns.length == 1) {
                 return {
 
@@ -123,8 +129,77 @@ export class SharedPdf2Component implements OnInit {
                 };
               };
               if (fila.columns.length == 3) {
+                
+                if(fila.columns[0].typeField == 'check' || fila.columns[1].typeField == 'check' || fila.columns[2].typeField == 'check'){
+                  return {
+                    columns: [
+                      {
+                        columns: [
+                          {
+                            width: '12%',
+                            canvas: [
+                              {
+                                type: 'rect',
+                                x: 0, y: 0, w: 15, h: 15,
+                                lineWidth: 0.5,
+                                lineColor: 'black',
+                                fillColor: 'yellow',
+                              }
+                            ],
+      
+                          },
+                          {
+                            text: fila.columns[0].label
+                          },
+                        ],
+                      },
+      
+                      {
+                        columns: [
+                          {
+                            width: '12%',
+                            canvas: [
+                              {
+                                type: 'rect',
+                                x: 0, y: 0, w: 15, h: 15,
+                                lineWidth: 0.5,
+                                lineColor: 'black',
+                                fillColor: 'yellow',
+                              }
+                            ],
+      
+                          },
+                          {
+                            text: fila.columns[1].label
+                          },
+                        ],
+                      },
+                      {
+                        columns: [
+                          {
+                            width: '12%',
+                            canvas: [
+                              {
+                                type: 'rect',
+                                x: 0, y: 0, w: 15, h: 15,
+                                lineWidth: 0.5,
+                                lineColor: 'black',
+                                fillColor: 'yellow',
+                              }
+                            ],
+      
+                          },
+                          {
+                            text: fila.columns[2].label
+                          },
+                        ],
+                      },
+                    ]
+                  };  
+                };
+                
                 return {
-
+                  
                   columns: [
                     {
                       stack: [
@@ -211,6 +286,7 @@ export class SharedPdf2Component implements OnInit {
 
         footer: {
           alignment: 'right',
+          fontSize: 10,
           margin: [0, 0, 40, 0] //[izquierda, superior, derecha, inferior].
         },
 

@@ -147,6 +147,39 @@ export class Datos {
 		data: {
 			section: [
 				{
+					title: 'Seccion de CKECKS',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'check',
+									label: 'Masculino',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									typeField: 'check',
+									label: 'Femenino',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									typeField: 'check',
+									label: 'Otro',
+									input: {
+										height: 300,
+										width: 100
+									}
+								}
+							],
+						},
+					]
+				},
+				{
 					title: 'Seccion 1',
 					fila: [
 						{
