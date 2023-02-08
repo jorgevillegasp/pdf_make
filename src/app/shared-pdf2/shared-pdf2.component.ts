@@ -40,10 +40,6 @@ export class SharedPdf2Component implements OnInit {
               text: section.title,
               style: 'titleSection'
             },
-            {
-              text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio ducimus assumenda a doloremque impedit enim, maiores ipsam. Nam natus quidem ea, assumenda voluptate facere at possimus ex animi enim a.',
-              alignment: 'justify',
-            },
             section.fila.map(function (fila) {
               console.log(fila.columns.length);
 
@@ -79,6 +75,58 @@ export class SharedPdf2Component implements OnInit {
                 };
               };
               if (fila.columns.length == 2) {
+
+
+                if(fila.columns[0].typeField == 'check' || fila.columns[1].typeField == 'check'){
+                  return {
+                    columns: [
+                      {
+                        columns: [
+                          {
+                            width: '8%',
+                            canvas: [
+                              {
+                                type: 'rect',
+                                x: 0, y: 0, w: 15, h: 15,
+                                lineWidth: 0.5,
+                                lineColor: 'black',
+                                fillColor: 'yellow',
+                              }
+                            ],
+      
+                          },
+                          {
+                            text: fila.columns[0].label
+                          },
+                        ],
+                        style: 'column',
+                      },
+      
+                      {
+                        columns: [
+                          {
+                            width: '8%',
+                            canvas: [
+                              {
+                                type: 'rect',
+                                x: 0, y: 0, w: 15, h: 15,
+                                lineWidth: 0.5,
+                                lineColor: 'black',
+                                fillColor: 'yellow',
+                              }
+                            ],
+      
+                          },
+                          {
+                            text: fila.columns[1].label
+                          },
+                        ],
+                        style: 'column',
+                      },
+                    ]
+                  };  
+                };
+
                 return {
 
                   columns: [
