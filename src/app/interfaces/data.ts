@@ -221,7 +221,7 @@ export class Datos {
 					]
 				},
 				{
-					title: 'Seccion 3',
+					title: 'Seccion #1',
 					fila: [
 						{
 							columns: [
@@ -273,10 +273,6 @@ export class Datos {
 							columns: [
 								{
 									typeField: 'check',
-									label: 'Masculino',
-								},
-								{
-									typeField: 'check',
 									label: 'Femenino',
 								},
 							],
@@ -285,16 +281,8 @@ export class Datos {
 							columns: [
 								{
 									typeField: 'check',
-									label: 'Masculino',
+									label: 'Otros',
 								},
-								{
-									typeField: 'check',
-									label: 'Femenino',
-								},
-								{
-									typeField: 'check',
-									label: 'Otro',
-								}
 							],
 						},
 					]
