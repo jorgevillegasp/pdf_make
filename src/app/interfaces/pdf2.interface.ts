@@ -21,7 +21,7 @@ export interface Fila{
 }
 
 export interface Column{
-    typeField?: string; //input | textArea | check | select?  
+    typeField?: string; //input | textArea | check | text  
     label: string;
     input?: Input;
 }

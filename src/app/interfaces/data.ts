@@ -147,8 +147,42 @@ export class Datos {
 		data: {
 			section: [
 				{
+					title: 'Descripcion del formulario',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur qui magnam atque doloribus sed obcaecati sint, quod reiciendis repudiandae eveniet corporis iusto tenetur modi placeat quasi deserunt commodi! Eaque, numquam.',
+								},
+							],
+						}
+					]
+				},
+				{
 					title: 'Seccion de CKECKS',
 					fila: [
+						
+						{
+							columns: [
+								{
+									typeField: 'check',
+									label: 'Masculino',
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'check',
+									label: 'Masculino',
+								},
+								{
+									typeField: 'check',
+									label: 'Femenino',
+								},
+							],
+						},
 						{
 							columns: [
 								{
@@ -163,23 +197,6 @@ export class Datos {
 									typeField: 'check',
 									label: 'Otro',
 								}
-							],
-						},
-					]
-				},
-				{
-					title: 'Seccion de CKECKS 1.1',
-					fila: [
-						{
-							columns: [
-								{
-									typeField: 'check',
-									label: 'Masculino',
-								},
-								{
-									typeField: 'check',
-									label: 'Femenino',
-								},
 							],
 						},
 					]
@@ -201,39 +218,25 @@ export class Datos {
 									typeField: 'input',
 									label: 'Nombre',
 								},
-								{
-									label: 'Apellido',
-									input: {
-										height: 200,
-										width: 200
-									}
-								}
 							],
 						},
 						{
 							columns: [
 								{
-									typeField: 'input',
-									label: 'N de solicitud',
+									typeField: 'check',
+									label: 'Masculino',
 								},
 								{
-									typeField: 'input',
-									label: 'Tipo de solicitud',
-									input: {
-										height: 200,
-										width: 200
-									}
+									typeField: 'check',
+									label: 'Femenino',
 								},
 								{
-									typeField: 'input',
-									label: 'Estado',
-									input: {
-										height: 100,
-										width: 300
-									}
+									typeField: 'check',
+									label: 'Otro',
 								}
 							],
-						}
+						},
+						
 					]
 				},
 				{
@@ -244,6 +247,14 @@ export class Datos {
 								{
 									typeField: 'textArea',
 									label: 'Description',
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'check',
+									label: 'Masculino',
 								},
 							],
 						},
@@ -271,18 +282,10 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'Tipo de solicitud',
-									input: {
-										height: 200,
-										width: 200
-									}
 								},
 								{
 									typeField: 'input',
 									label: 'Estado',
-									input: {
-										height: 100,
-										width: 300
-									}
 								}
 							],
 						}
@@ -316,18 +319,10 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'Tipo de solicitud',
-									input: {
-										height: 200,
-										width: 200
-									}
 								},
 								{
 									typeField: 'input',
 									label: 'Estado',
-									input: {
-										height: 100,
-										width: 300
-									}
 								}
 							],
 						}

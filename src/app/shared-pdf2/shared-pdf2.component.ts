@@ -46,6 +46,35 @@ export class SharedPdf2Component implements OnInit {
             
 
               if (fila.columns.length == 1) {
+
+                
+                if(fila.columns[0].typeField == 'check'){
+                  return {
+                    columns: [
+                      {
+                        columns: [
+                          {
+                            width: '4%',
+                            canvas: [
+                              {
+                                type: 'rect',
+                                x: 0, y: 0, w: 15, h: 15,
+                                lineWidth: 0.5,
+                                lineColor: 'black',
+                                fillColor: 'yellow',
+                              }
+                            ],
+      
+                          },
+                          {
+                            text: fila.columns[0].label
+                          },
+                        ],
+                        style: 'column',
+                      },
+                    ]
+                  }
+                }
                 return {
 
                   columns: [
@@ -81,6 +110,7 @@ export class SharedPdf2Component implements OnInit {
                   return {
                     columns: [
                       {
+                        
                         columns: [
                           {
                             width: '8%',
