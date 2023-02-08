@@ -1,7 +1,9 @@
 
-import { Pdf, Data, Form, Column, Input } from './pdf.interface';
+import { Pdf } from './pdf.interface';
+import { Pdf2 } from './pdf2.interface';
 
-export class Datos{
+
+export class Datos {
 
 	static pdfData: Pdf = {
 		title: 'Formulario de creacion',
@@ -132,11 +134,205 @@ export class Datos{
 						}
 					],
 				},
-				
+
 
 			],
 		}
 	};
 
+
+	static pdfData2: Pdf2 = {
+		title: 'Formulario de creacion',
+		footer: 'Este informe fue generado el 06/02/2023',
+		data: {
+			section: [
+				{
+					title: 'Seccion 1',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'Nombre',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									label: 'Apellido',
+									input: {
+										height: 200,
+										width: 200
+									}
+								}
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'N de solicitud',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									typeField: 'input',
+									label: 'Tipo de solicitud',
+									input: {
+										height: 200,
+										width: 200
+									}
+								},
+								{
+									typeField: 'input',
+									label: 'Estado',
+									input: {
+										height: 100,
+										width: 300
+									}
+								}
+							],
+						}
+					]
+				},
+				{
+					title: 'Seccion 2',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'Nombre',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									label: 'Apellido',
+									input: {
+										height: 200,
+										width: 200
+									}
+								}
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'N de solicitud',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									typeField: 'input',
+									label: 'Tipo de solicitud',
+									input: {
+										height: 200,
+										width: 200
+									}
+								},
+								{
+									typeField: 'input',
+									label: 'Estado',
+									input: {
+										height: 100,
+										width: 300
+									}
+								}
+							],
+						}
+					]
+				},
+				{
+					title: 'Seccion 3',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'N de solicitud',
+									input: {
+										height: 300,
+										width: 100
+									}
+								},
+								{
+									typeField: 'input',
+									label: 'Tipo de solicitud',
+									input: {
+										height: 200,
+										width: 200
+									}
+								},
+								{
+									typeField: 'input',
+									label: 'Estado',
+									input: {
+										height: 100,
+										width: 300
+									}
+								}
+							],
+						}
+					]
+				}
+			]
+		}
+	}
 
 }

@@ -5,7 +5,6 @@ export interface Pdf{
 }
 
 export interface Data{
-
     forms: Form[];
 }
 

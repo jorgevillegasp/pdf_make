@@ -1,4 +1,4 @@
-export interface Pdf{
+export interface Pdf2{
     title: string;
     footer: string;
     data: Data;
