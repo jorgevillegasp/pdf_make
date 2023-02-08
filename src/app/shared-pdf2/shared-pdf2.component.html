@@ -1,5 +1,44 @@
 
-
+<h3>Generador de pdf</h3>
 <button class="btn btn-primary" (click)="generatePDF()">Generar PDF2</button>
+<hr>
+<h5>Estructura de datos a llegar</h5>
+<p>
+
+    export interface Pdf2 <br>
+    
+        *  title: string;<br>
+        *  footer: string;<br>
+        *  data: Data;<br><br>
+
+
+    export interface Data <br>
+        *  section: Section[]; <br><br>
+    
+    
+    export interface Section<br>
+        *  title?: string<br>
+        *  fila: Fila[]<br><br>
+    
+    
+    export interface Fila<br>
+        *  //la cantidad de columnas que puede tener <br>
+        *  //no debe de ser mas de 3 registros<br>
+        *  columns: Column[]; //1 | 2 | 3<br><br>
+    
+    
+    export interface Column<br>
+        *  typeField?: string; //input | textArea | check | text  <br>
+        *  label: string;<br>
+        *  input?: Input;<br><br>
+    
+    
+    export interface Input<br>
+        *  height?: number; //altura<br>
+        *  width?: number; //ancho<br><br>
+    
+    
+
+</p>
 
    
