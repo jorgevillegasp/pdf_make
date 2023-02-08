@@ -142,7 +142,7 @@ export class Datos {
 
 
 	static pdfData2: Pdf2 = {
-		title: 'Formulario de creacion',
+		title: 'Formulario de Información del Cliente',
 		footer: 'Este informe fue generado el 06/02/2023',
 		data: {
 			section: [
@@ -153,8 +153,106 @@ export class Datos {
 							columns: [
 								{
 									typeField: 'text',
-									label: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur qui magnam atque doloribus sed obcaecati sint, quod reiciendis repudiandae eveniet corporis iusto tenetur modi placeat quasi deserunt commodi! Eaque, numquam.',
+									label: 'Este formulario es una herramienta diseñada para recopilar información importante de nuestros usuarios. Incluye campos para ingresar datos personales como nombre, dirección y número de teléfono, así como también preguntas específicas relacionadas con el propósito del formulario. La información recopilada será utilizada para proporcionar un mejor servicio y atención a nuestros usuarios. Rellenar este formulario es sencillo y rápido, y nos ayudará a mantener actualizados nuestros registros. Gracias por tomarse el tiempo de completarlo..',
 								},
+							],
+						},
+					]
+				},
+				{
+					title: 'Datos Personales',
+					fila: [	
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'Nombre',
+								},
+								{
+									label: 'Apellido',
+									input: {
+										height: 200,
+										width: 200
+									}
+								}
+							],
+						},
+						
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'N de solicitud',
+								},
+								{
+									typeField: 'input',
+									label: 'Tipo de solicitud',
+								},
+								{
+									typeField: 'input',
+									label: 'Estado',
+								}
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'check',
+									label: 'Masculino',
+								},
+								{
+									typeField: 'check',
+									label: 'Femenino',
+								},
+								{
+									typeField: 'check',
+									label: 'Otro',
+								}
+							],
+						},
+					]
+				},
+				{
+					title: 'Seccion 3',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'textArea',
+									label: 'Description',
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'input',
+									label: 'N de solicitud',
+								},
+								{
+									typeField: 'input',
+									label: 'Tipo de solicitud',
+								},
+								{
+									typeField: 'input',
+									label: 'Estado',
+								}
 							],
 						}
 					]
@@ -201,133 +299,6 @@ export class Datos {
 						},
 					]
 				},
-				{
-					title: 'Seccion 1',
-					fila: [
-						{
-							columns: [
-								{
-									typeField: 'textArea',
-									label: 'Description',
-								},
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'input',
-									label: 'Nombre',
-								},
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'check',
-									label: 'Masculino',
-								},
-								{
-									typeField: 'check',
-									label: 'Femenino',
-								},
-								{
-									typeField: 'check',
-									label: 'Otro',
-								}
-							],
-						},
-						
-					]
-				},
-				{
-					title: 'Seccion 2',
-					fila: [
-						{
-							columns: [
-								{
-									typeField: 'textArea',
-									label: 'Description',
-								},
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'check',
-									label: 'Masculino',
-								},
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'input',
-									label: 'Nombre',
-								},
-								{
-									label: 'Apellido',
-									input: {
-										height: 200,
-										width: 200
-									}
-								}
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'input',
-									label: 'N de solicitud',
-								},
-								{
-									typeField: 'input',
-									label: 'Tipo de solicitud',
-								},
-								{
-									typeField: 'input',
-									label: 'Estado',
-								}
-							],
-						}
-					]
-				},
-				{
-					title: 'Seccion 3',
-					fila: [
-						{
-							columns: [
-								{
-									typeField: 'textArea',
-									label: 'Description',
-								},
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'textArea',
-									label: 'Description',
-								},
-							],
-						},
-						{
-							columns: [
-								{
-									typeField: 'input',
-									label: 'N de solicitud',
-								},
-								{
-									typeField: 'input',
-									label: 'Tipo de solicitud',
-								},
-								{
-									typeField: 'input',
-									label: 'Estado',
-								}
-							],
-						}
-					]
-				}
 			]
 		}
 	}
