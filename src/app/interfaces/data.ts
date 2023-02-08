@@ -154,26 +154,14 @@ export class Datos {
 								{
 									typeField: 'check',
 									label: 'Masculino',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									typeField: 'check',
 									label: 'Femenino',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									typeField: 'check',
 									label: 'Otro',
-									input: {
-										height: 300,
-										width: 100
-									}
 								}
 							],
 						},
@@ -187,18 +175,10 @@ export class Datos {
 								{
 									typeField: 'check',
 									label: 'Masculino',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									typeField: 'check',
 									label: 'Femenino',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 							],
 						},
@@ -212,10 +192,6 @@ export class Datos {
 								{
 									typeField: 'textArea',
 									label: 'Description',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 							],
 						},
@@ -224,10 +200,6 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'Nombre',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									label: 'Apellido',
@@ -243,10 +215,6 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'N de solicitud',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									typeField: 'input',
@@ -276,10 +244,6 @@ export class Datos {
 								{
 									typeField: 'textArea',
 									label: 'Description',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 							],
 						},
@@ -288,10 +252,6 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'Nombre',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									label: 'Apellido',
@@ -307,10 +267,6 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'N de solicitud',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									typeField: 'input',
@@ -340,10 +296,6 @@ export class Datos {
 								{
 									typeField: 'textArea',
 									label: 'Description',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 							],
 						},
@@ -352,10 +304,6 @@ export class Datos {
 								{
 									typeField: 'textArea',
 									label: 'Description',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 							],
 						},
@@ -364,10 +312,6 @@ export class Datos {
 								{
 									typeField: 'input',
 									label: 'N de solicitud',
-									input: {
-										height: 300,
-										width: 100
-									}
 								},
 								{
 									typeField: 'input',

@@ -18,16 +18,15 @@ export interface Fila{
     //la cantidad de columnas que puede tener 
     //no debe de ser mas de 3 registros
     columns: Column[]; //1 | 2 | 3
-
 }
 
 export interface Column{
-    typeField?: string; //Input | TextArea | Check | Range | Select    
+    typeField?: string; //input | textArea | check | select?  
     label: string;
-    input: Input;
+    input?: Input;
 }
 
 export interface Input{
-    height?: number;
-    width?: number;
+    height?: number; //altura
+    width?: number; //ancho
 }
