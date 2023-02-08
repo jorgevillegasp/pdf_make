@@ -14,7 +14,7 @@ export class Datos {
 					subtitulo: 'Seccion 1',
 					columns: [
 						{
-							typeField: 'textArea',
+							typeField: 'input',
 							label: 'Description',
 							input: {
 								height: 300,
@@ -197,6 +197,15 @@ export class Datos {
 						{
 							columns: [
 								{
+									typeField: 'input',
+									label: 'direccion',
+								},
+							],
+						},
+						
+						{
+							columns: [
+								{
 									typeField: 'textArea',
 									label: 'Description',
 								},
@@ -221,21 +230,21 @@ export class Datos {
 					]
 				},
 				{
-					title: 'Seccion #1',
+					title: 'Datos del trabajo',
 					fila: [
 						{
 							columns: [
 								{
-									typeField: 'textArea',
-									label: 'Description',
+									typeField: 'input',
+									label: 'Nombre de la empresa',
 								},
 							],
 						},
 						{
 							columns: [
 								{
-									typeField: 'textArea',
-									label: 'Description',
+									typeField: 'input',
+									label: 'Direccion',
 								},
 							],
 						},
