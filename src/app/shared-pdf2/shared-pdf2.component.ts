@@ -152,6 +152,7 @@ export class SharedPdf2Component implements OnInit {
                             text: fila.columns[0].label
                           },
                         ],
+                        style: 'column',
                       },
       
                       {
@@ -173,6 +174,7 @@ export class SharedPdf2Component implements OnInit {
                             text: fila.columns[1].label
                           },
                         ],
+                        style: 'column',
                       },
                       {
                         columns: [
@@ -193,6 +195,7 @@ export class SharedPdf2Component implements OnInit {
                             text: fila.columns[2].label
                           },
                         ],
+                        style: 'column',
                       },
                     ]
                   };  
