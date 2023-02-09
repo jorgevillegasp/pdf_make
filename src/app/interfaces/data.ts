@@ -319,6 +319,8 @@ export class Datos {
 		nombreFactura: 'formulario_nombre de la agencia reguladora',
 		anexo: 'anexo 5',
 		footer: 'Este informe fue generado el 06/02/2023',
+		fechaCreacion: 'Jueves 09 de Febrero del 2022',
+		fondoAgua: 'BORRADOR',
 		data: {
 			section: [
 				{
@@ -457,9 +459,62 @@ export class Datos {
 								},
 							],
 						},
+						{
+							table: {
+								head: [
+									{
+										label: 'CENTRO DE PRODUCCION',
+									},
+									{
+										label: 'FORMA FARMACEUTICA',
+									},
+									{
+										label: 'CATEGORIA',
+									},
+									{
+										label: 'ACTIVIDA DE PRODUCTO',
+									},
+								],
+								body: 
+								[
+									{
+									   label: 'formulario_centro de produccion',
+									},
+									{
+									   label: 'formulario_forma farmaceutica',
+									},
+									{
+									   label: 'formulario_categoria',
+									},
+									{
+									   label: 'actividad de produccion',
+									},
+								 ],
+							},
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'FECHA DE EMICION',
+									value: 'Fecha cuando el coordinador general tecnico genera el certificado'
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'FECHA DE VIGENCIA',
+									value: 'Formulario_fecha de vigencia del certificadio extranjero'
+								},
+							],
+						},
 					]
 				},
-			]
+				
+			],
+			
 		}
 	}
 

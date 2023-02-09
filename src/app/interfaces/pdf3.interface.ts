@@ -4,6 +4,8 @@ export interface Pdf3{
     anexo?: string;
     footer: string;
     data: Data;
+    fechaCreacion?: string;
+    fondoAgua?: string;
 }
 
 export interface Data{
@@ -19,7 +21,8 @@ export interface Section{
 export interface Fila{
     //la cantidad de columnas que puede tener 
     //no debe de ser mas de 3 registros
-    columns: Column[]; //1 | 2 | 3
+    columns?: Column[]; //1 | 2 | 3
+    table?: Table;
 }
 
 export interface Column{
@@ -28,8 +31,10 @@ export interface Column{
     value?: string;
 }
 
+
+//en caso de insertar una tabla
 export interface Table{
-    header: Head[];
+    head: Head[];
     body: Body[];
 }
 
