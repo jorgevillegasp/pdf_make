@@ -26,12 +26,19 @@ export interface Column{
     typeField?: string; //input | textArea | check | text  
     label: string;
     value?: string;
-    input?: Input;
 }
 
-export interface Input{
-    height?: number; //altura
-    width?: number; //ancho
+export interface Table{
+    header: Head[];
+    body: Body[];
 }
+
+export interface Head{
+    label: string;
+}
+export interface Body{
+    label: string;
+}
+
 
 
