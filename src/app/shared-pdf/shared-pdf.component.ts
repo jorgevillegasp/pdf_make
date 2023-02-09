@@ -216,14 +216,17 @@ export class SharedPdfComponent implements OnInit {
           fontSize: 11,
           margin: [0, 0, 0, 3] //[izquierda, superior, derecha, inferior].
         },
+
         form: {
           margin: [0, 7, 0, 0] //[izquierda, superior, derecha, inferior].
         },
+
         subheader: {
           fontSize: 16,
           bold: true,
           margin: [0, 10, 0, 5]
         },
+        
         tableExample: {
           margin: [0, 5, 0, 15]
         },
