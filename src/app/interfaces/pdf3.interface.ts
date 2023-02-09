@@ -1,11 +1,11 @@
 export interface Pdf3{
-    codigo?: string;
+    codigo?:        string;
     nombreFactura?: string;
-    anexo?: string;
-    footer: string;
-    data: Data;
+    anexo?:         string;
+    footer?:        string;
     fechaCreacion?: string;
-    fondoAgua?: string;
+    fondoAgua?:     string;
+    data:           Data;
 }
 
 export interface Data{
@@ -13,21 +13,31 @@ export interface Data{
 }
 
 export interface Section{
-    title: string;
-    fila: Fila[];
-
+    title:  string;
+    fila:   Fila[];
 }
 
+/**
+ * interface que admite un solo objeto.
+ * Puede tener columnas o
+ * Puede tener una tabla
+ **/
 export interface Fila{
+    
+    columns?: Column[]; //1 | 2 | 3
     //la cantidad de columnas que puede tener 
     //no debe de ser mas de 3 registros
-    columns?: Column[]; //1 | 2 | 3
-    table?: Table;
+
+    table?: Table;  
+    //Objeto Table en caso de insertar una tabla
 }
+
 
 export interface Column{
     typeField?: string; //input | textArea | check | text  
-    label: string;
+    // Se agregó una propiedad typeField a la interfaz Column 
+    // para especificar el tipo de campo que se desea mostrar.  
+    label:  string;
     value?: string;
 }
 
