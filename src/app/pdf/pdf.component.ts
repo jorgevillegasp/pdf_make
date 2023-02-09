@@ -482,6 +482,41 @@ export class PdfComponent implements OnInit {
                         return {
                            table: {
                               body: [
+                                 [
+                                    {
+                                       text: fila.table.head[0].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[1].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[2].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[3].label,
+                                       style: 'tableHeader',
+                                    }
+                                 ],
+                                 fila.table.body.map(function (body) {
+                                    return [
+                                       {
+                                          text: body.label,
+                                          style: 'tableBody',
+                                       }
+                                    ];
+                                 }),
+                              ],
+                           },
+                           style: 'table',
+                        };
+
+                        /*
+                        return {
+                           table: {
+                              body: [
                                  fila.table.head.map(function (head) {
                                     return [
                                        {
@@ -502,6 +537,7 @@ export class PdfComponent implements OnInit {
                            },
                            style: 'table',
                         };
+                        */
                      }
                      return { text: 'NO RETORNA NADA', color: 'red' };
                   })
