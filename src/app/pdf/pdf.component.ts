@@ -20,11 +20,11 @@ export class PdfComponent implements OnInit {
          pageSize: 'A4',
 
 
-         header: {
-            text: Datos.pdfData2.title,
-            alignment: 'center',
-            style: 'header'
-         },
+         // header: {
+         //    text: Datos.pdfData3.title,
+         //    alignment: 'center',
+         //    style: 'header'
+         // },
 
 
          footer: function (currentPage = 0, pageCount = 0) {
@@ -36,6 +36,49 @@ export class PdfComponent implements OnInit {
 
          //Body
          content: [
+
+            //ENCABEZADO
+            {
+               text: [
+                  {
+                     text:'Confire \n\n',
+                     alignment: 'center'
+                  },
+                  {
+                     text: [
+                        {
+                           text: 'El registro del certificado de Buenas Practicas de Manufactura extranjero emitido por ',
+                           alignment: 'center'
+                        },
+                        {
+                           text: '('+ Datos.pdfData3.nombreFactura+') ',
+                           alignment: 'center',
+                           color: '#1b9aa1',
+                           bold: true,
+                        },
+                        {
+                           text:'por lo que se le comunica que su codigo BPM es: \n\n',
+                           alignment: 'center'
+                        },
+                     ],
+                     alignment: 'center'
+                  },
+                  {
+                     text: Datos.pdfData3.codigo,
+                     bold: true,
+                     alignment: 'center'
+                  },
+                  {
+                     text: ' '+ Datos.pdfData3.anexo +' \n\n',
+                     color: '#1b9aa1',
+                     fontSize: 9,
+                  },
+                  {
+                     text:'A:',  
+                     alignment: 'center'
+                  },
+               ]
+            },
 
 
 
@@ -49,10 +92,7 @@ export class PdfComponent implements OnInit {
                            [section.title,]
                         ]
                      },
-                     fillColor: '#000',
-                     color: 'white',
-
-                     //style: 'titleSection'
+                     style: 'titleSection'
                   },
 
 
@@ -71,10 +111,11 @@ export class PdfComponent implements OnInit {
                                  },
                                  {
                                     text: fila.columns[0].value,
-                                    color: '#000',
+                                    
+                                    style: 'textValor',
                                  }
                               ],
-                              style: 'column',
+                              style: 'saltoLinea',
                               fontSize: 10,
                            }
                         }
@@ -434,7 +475,6 @@ export class PdfComponent implements OnInit {
 
          styles: {
             header: {
-               
                fontSize: 18,
                bold: true,
                margin: [0, 15, 0, 0] //[izquierda, superior, derecha, inferior].
@@ -447,13 +487,23 @@ export class PdfComponent implements OnInit {
             },
 
             titleSection: {
-               fontSize: 15,
-               margin: [0, 15, 0, 5] //[izquierda, superior, derecha, inferior].
+               fillColor: '#000',
+               color: 'white',
+               fontSize: 12,
+               margin: [0, 15, 0, 15] //[izquierda, superior, derecha, inferior]
             },
 
             label: {
                fontSize: 11,
                margin: [0, 0, 0, 3] //[izquierda, superior, derecha, inferior].
+            },
+
+            saltoLinea: {
+               margin: [0, 5, 0, 0] //[izquierda, superior, derecha, inferior].
+            },
+
+            textValor:{
+               color: '#1b9aa1',
             },
 
             column: {
@@ -462,7 +512,8 @@ export class PdfComponent implements OnInit {
 
          },
          defaultStyle: {
-            alignment: 'justify'
+            alignment: 'justify',
+            fontSize: 10,
          }
 
       }

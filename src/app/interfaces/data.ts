@@ -315,23 +315,12 @@ export class Datos {
 	}
 
 	static pdfData3: Pdf3 = {
-		title: 'Formulario de Información del Cliente',
+		codigo: 'BPLFE-000',
+		nombreFactura: 'formulario_nombre de la agencia reguladora',
+		anexo: 'anexo 5',
 		footer: 'Este informe fue generado el 06/02/2023',
 		data: {
 			section: [
-				{
-					title: 'Descripcion del formulario',
-					fila: [
-						{
-							columns: [
-								{
-									typeField: 'text',
-									label: 'Este formulario es una herramienta diseñada para recopilar información importante de nuestros usuarios. Incluye campos para ingresar datos personales como nombre, dirección y número de teléfono, así como también preguntas específicas relacionadas con el propósito del formulario. La información recopilada será utilizada para proporcionar un mejor servicio y atención a nuestros usuarios. Rellenar este formulario es sencillo y rápido, y nos ayudará a mantener actualizados nuestros registros. Gracias por tomarse el tiempo de completarlo..',
-								},
-							],
-						},
-					]
-				},
 				{
 					title: 'DATOS GENERALES DEL LABORATORIO FARMACEUTICO',
 					fila: [
@@ -339,7 +328,7 @@ export class Datos {
 							columns: [
 								{
 									typeField: 'text',
-									label: 'Nombre del fabricante',
+									label: 'NOMBRE DEL FABRICANTE',
 									value: 'Formulario_nombre_del_laboratorio'
 								},
 							],
@@ -388,6 +377,83 @@ export class Datos {
 									typeField: 'text',
 									label: 'PLANTA',
 									value: 'Formulario_planta del laboratotio'
+								},
+							],
+						},
+					]
+				},
+				{
+					title: 'DATOS GENERALES DEL SOLICITANTE',
+					fila: [
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'NOMBRE DEL ESTABLECIMIENTO FARMACEUTICO',
+									value: 'Formulario_razon social'
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'RESPONSABLE LEGAL',
+									value: 'Formulario_nombre '
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'NUMERO DEL ESTABLECIMIENTO',
+									value: 'Formulario_establecimiento '
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'PROVINCIA',
+									value: 'Formulario_establecimiento '
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'CANTÓN',
+									value: 'Formulario_canton '
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'PARROQUIA',
+									value: 'Formulario_parroquia '
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'DIRECCIÓN',
+									value: 'Formulario_direccion'
+								},
+							],
+						},
+						{
+							columns: [
+								{
+									typeField: 'text',
+									label: 'ÁREAS CERTIFICADAS',
+									value: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus corporis officia totam, reprehenderit perferendis consectetur sit quos ab iste magni iure inventore ipsam cum soluta illo maxime quasi porro eveniet?'
 								},
 							],
 						},

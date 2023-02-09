@@ -1,5 +1,7 @@
 export interface Pdf3{
-    title: string;
+    codigo?: string;
+    nombreFactura?: string;
+    anexo?: string;
     footer: string;
     data: Data;
 }
@@ -31,3 +33,5 @@ export interface Input{
     height?: number; //altura
     width?: number; //ancho
 }
+
+
