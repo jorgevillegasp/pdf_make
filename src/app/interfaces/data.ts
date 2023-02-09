@@ -322,7 +322,7 @@ export class Datos {
 		data: {
 			section: [
 				{
-					title: 'DATOS GENERALES DEL LABORATORIO FARMACEUTICO',
+					title: 'DATOS GENERALES DEL LABORATORIO FARMACEUTICO EXTRANJERO',
 					fila: [
 						{
 							columns: [

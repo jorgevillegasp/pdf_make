@@ -41,7 +41,7 @@ export class PdfComponent implements OnInit {
             {
                text: [
                   {
-                     text:'Confire \n\n',
+                     text: 'Confire \n\n',
                      alignment: 'center'
                   },
                   {
@@ -51,13 +51,13 @@ export class PdfComponent implements OnInit {
                            alignment: 'center'
                         },
                         {
-                           text: '('+ Datos.pdfData3.nombreFactura+') ',
+                           text: '(' + Datos.pdfData3.nombreFactura + ') ',
                            alignment: 'center',
                            color: '#1b9aa1',
                            bold: true,
                         },
                         {
-                           text:'por lo que se le comunica que su codigo BPM es: \n\n',
+                           text: 'por lo que se le comunica que su codigo BPM es: \n\n',
                            alignment: 'center'
                         },
                      ],
@@ -69,12 +69,12 @@ export class PdfComponent implements OnInit {
                      alignment: 'center'
                   },
                   {
-                     text: ' '+ Datos.pdfData3.anexo +' \n\n',
+                     text: ' ' + Datos.pdfData3.anexo + ' \n\n',
                      color: '#1b9aa1',
                      fontSize: 9,
                   },
                   {
-                     text:'A:',  
+                     text: 'A:',
                      alignment: 'center'
                   },
                ]
@@ -106,12 +106,12 @@ export class PdfComponent implements OnInit {
                            return {
                               text: [
                                  {
-                                    text: fila.columns[0].label+':  ',
+                                    text: fila.columns[0].label + ':  ',
                                     bold: true,
                                  },
                                  {
                                     text: fila.columns[0].value,
-                                    
+
                                     style: 'textValor',
                                  }
                               ],
@@ -469,6 +469,52 @@ export class PdfComponent implements OnInit {
                ];
             }),
 
+
+            //TIPO TABLA
+            {
+               table: {
+                  body: [
+                     [
+                        {
+                           text: 'CENTRO DE PRODUCCION',
+                           style: 'tableHeader',
+                        },
+                        {
+                           text: 'FORMA FARMACEUTICA',
+                           style: 'tableHeader',
+                        },
+                        {
+                           text: 'CATEGORIA',
+                           style: 'tableHeader',
+                        },
+                        {
+                           text: 'ACTIVIDA DE PRODUCTO',
+                           style: 'tableHeader',
+                        },
+                     ],
+                     [
+                        {
+                           text: 'formulario_centro de produccion',
+                           style: 'tableBody',
+                        },
+                        {
+                           text: 'formulario_forma farmaceutica',
+                           style: 'tableBody',
+                        },
+                        {
+                           text: 'formulario_categoria',
+                           style: 'tableBody',
+                        },
+                        {
+                           text: 'actividad de produccion',
+                           style: 'tableBody',
+                        },
+                     ],
+                  ]
+               },
+               style: 'table',
+            },
+
          ],
 
 
@@ -502,12 +548,31 @@ export class PdfComponent implements OnInit {
                margin: [0, 5, 0, 0] //[izquierda, superior, derecha, inferior].
             },
 
-            textValor:{
+            textValor: {
                color: '#1b9aa1',
             },
 
             column: {
                margin: [0, 10, 7, 0] //[izquierda, superior, derecha, inferior].
+            },
+
+            //Estilos para la tabla en general
+            table: {
+               margin: [0, 15, 0, 15] //[izquierda, superior, derecha, inferior]
+            },
+
+            //estilos para el encabezado dela  tablas
+            tableHeader: {
+               fillColor: '#000',
+               color: '#FFF',
+               alignment: 'center',
+            },
+
+            //Estilos para el cuerpo de la tabla
+            tableBody: {
+               color: '#1b9aa1',
+               fontSize: 10,
+               alignment: 'center',
             },
 
          },
