@@ -465,12 +465,7 @@ export class Datos {
             {
               table: {
                 head:[
-                  { 
-                    name: 'CENTRO DE PRODUCCION', 
-                    age: 'FORMA FARMACEUTICA', 
-                    country: 'CATEGORIA',
-                    notes: 'ACTIVIDA DE PRODUCTO',
-                  }
+                  { name: 'CENTRO DE PRODUCCION', age: 'FORMA FARMACEUTICA', country: 'CATEGORIA', notes: 'ACTIVIDA DE PRODUCTO', }
                 ],
                 body: [
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
