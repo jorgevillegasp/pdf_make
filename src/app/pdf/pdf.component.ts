@@ -459,7 +459,7 @@ export class PdfComponent implements OnInit {
                   //Se lo va hacer de manera ceparada debido a que en el head
                   //no coge el color que uno le desea si lo recorremos con map
 
-                  if (fila.table.head.length == 1) {
+                  if (fila.table.head.length == 1 && fila.table.body != null){
                      return {
                         table: {
                            widths: ['*',],
@@ -482,7 +482,7 @@ export class PdfComponent implements OnInit {
                      };
                   };
 
-                  if (fila.table.head.length == 2) {
+                  if (fila.table.head.length == 2 && fila.table.body != null) {
                      
                      
                      return {
@@ -502,7 +502,14 @@ export class PdfComponent implements OnInit {
                               ],
 
                               //TODO: CUERPO
-                              
+                              fila.table.body[0].fila.map(function (body) {
+                                 return [
+                                    {
+                                       text: body.label,
+                                       style: 'tableBody',
+                                    }
+                                 ];
+                              }),
 
 
 
@@ -512,7 +519,7 @@ export class PdfComponent implements OnInit {
                      };
                   };
 
-                  if (fila.table.head.length == 3) {
+                  if (fila.table.head.length == 3 && fila.table.body != null) {
                      return {
                         table: {
                            widths: ['*', '*', '*'],
@@ -533,26 +540,27 @@ export class PdfComponent implements OnInit {
                                  },
                               ],
                               //TODO: cuerpo de la tabla
-                              // fila.table.body[0].fila.map(function (body) {
-                              //    return [
-                              //       {
-                              //          text: body.label,
-                              //          style: 'tableBody',
-                              //       }
-                              //    ];
-                              // }),
+                              fila.table.body[0].fila.map(function (body) {
+                                 return [
+                                    {
+                                       text: body.label,
+                                       style: 'tableBody',
+                                    }
+                                 ];
+                              }),
                            ],
                         },
                         style: 'table',
                      };
                   };
 
-                  if (fila.table.head.length == 4) {
+                  if (fila.table.head.length == 4 && fila.table.body1 != null) {
+                     
                      var body:any = [];
 
                      fila.table.body1.map(function (data){
                         var row = [
-                           data.name, 
+                           data.name,
                            data.age, 
                            data.country, 
                            data.notes
@@ -563,6 +571,37 @@ export class PdfComponent implements OnInit {
                      return {
                         table: {
                            widths: ['*', '*', '*', '*'],
+                           body: [
+                              //head
+                              [
+                                 {
+                                    text: 'Nombre',
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: 'Age',
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: 'Country',
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: 'Notas',
+                                    style: 'tableHeader',
+                                 }
+                              ],
+                              ...body
+                           ],
+                        },
+                        style: 'table',
+                     };
+                  }
+
+                  if (fila.table.head.length == 5 && fila.table.body != null){
+                     return {
+                        table: {
+                           widths: ['*', '*', '*', '*', '*'],
                            body: [
                               [
                                  {
@@ -580,63 +619,26 @@ export class PdfComponent implements OnInit {
                                  {
                                     text: fila.table.head[3].label,
                                     style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[4].label,
+                                    style: 'tableHeader',
                                  }
                               ],
-                              ...body
-                              // TODO: cueropo de la tabla
-                              // fila.table.body[0].fila.map(function (body) {
-                              //    return [
-                              //       {
-                              //          text: body.label,
-                              //          style: 'tableBody',
-                              //       }
-                              //    ];
-                              // }),
+                              //TODO: CUERPO DE LA TABLA
+                              fila.table.body[0].fila.map(function (body) {
+                                 return [
+                                    {
+                                       text: body.label,
+                                       style: 'tableBody',
+                                    }
+                                 ];
+                              }),
                            ],
                         },
                         style: 'table',
                      };
                   }
-
-                  return {
-                     table: {
-                        widths: ['*', '*', '*', '*', '*'],
-                        body: [
-                           [
-                              {
-                                 text: fila.table.head[0].label,
-                                 style: 'tableHeader',
-                              },
-                              {
-                                 text: fila.table.head[1].label,
-                                 style: 'tableHeader',
-                              },
-                              {
-                                 text: fila.table.head[2].label,
-                                 style: 'tableHeader',
-                              },
-                              {
-                                 text: fila.table.head[3].label,
-                                 style: 'tableHeader',
-                              },
-                              {
-                                 text: fila.table.head[4].label,
-                                 style: 'tableHeader',
-                              }
-                           ],
-                           //TODO: CUERPO DE LA TABLA
-                           // fila.table.body[0].fila.map(function (body) {
-                           //    return [
-                           //       {
-                           //          text: body.label,
-                           //          style: 'tableBody',
-                           //       }
-                           //    ];
-                           // }),
-                        ],
-                     },
-                     style: 'table',
-                  };
                }
                return { text: 'NO RETORNA NADA', color: 'red' };
             })

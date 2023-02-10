@@ -518,7 +518,7 @@ export class Datos {
                     label: 'ACTIVIDA DE PRODUCTO',
                   },
                 ],
-                body: [
+                body1: [
                   { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
                   { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
                   { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },

@@ -45,8 +45,8 @@ export interface Column{
 //en caso de insertar una tabla
 export interface Table{
     head: Head[];
-    body: TableBody[];
-    body1: any[];
+    body?: TableBody[];
+    body1?: any[];
 }
 
 export interface Head{
