@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { Datos } from './interfaces/data';
+import { Datos } from './interfaces/datos';
 import { Pdf } from './interfaces/pdf.interface';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Datos } from '../interfaces/data';
+import { Datos } from '../interfaces/datos';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import { Fila } from '../interfaces/pdf3.interface';
 import { createUrlTreeFromSnapshot } from '@angular/router';
@@ -21,7 +21,8 @@ export class PdfComponent implements OnInit {
          text: [
             {
                text: 'Confiere \n\n',
-               alignment: 'center'
+               alignment: 'center',
+               fontSize: 13,
             },
             {
                text: [
@@ -107,8 +108,7 @@ export class PdfComponent implements OnInit {
                         }
                      }
 
-
-                     //Si es uin tipo TextArea
+                     //Si es un tipo TextArea
                      if (fila.columns[0].typeField == 'textArea') {
                         return {
                            columns: [
@@ -561,8 +561,7 @@ export class PdfComponent implements OnInit {
 
                   // ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
                   if(fila.table.body1 != null && fila.table.head1 != null){
-                     
-                     if (fila.table.head1.length == 4) {
+                   
                         
                         var body:any = [];
                         
@@ -573,8 +572,6 @@ export class PdfComponent implements OnInit {
                            {text: fila.table.head1[3], style: 'tableHeader',}
                         ]);
                      
-                        
-   
                         fila.table.body1.map(function (data){
                            var row = [
                               {text: data.name, style: 'tableBody',},
@@ -613,7 +610,7 @@ export class PdfComponent implements OnInit {
                            },
                            style: 'table',
                         };
-                     }
+                     
                   }
                   
                   if(fila.table.body != null && fila.table.head != null){
@@ -667,7 +664,7 @@ export class PdfComponent implements OnInit {
    }
 
 
-   generatePDF1() {
+   generatePDF() {
 
       var dd: any = {
          pageSize: 'A4',
@@ -680,6 +677,7 @@ export class PdfComponent implements OnInit {
          // },
 
          //FONDO DE AGUA
+         //aparecera si exite un valor dentro
          watermark: {
             text: Datos.pdfData3.fondoAgua,
             color: '#C0D1EB',
@@ -688,7 +686,8 @@ export class PdfComponent implements OnInit {
             italics: false,
          },
 
-
+         //PIE DE PAGINA
+         //en este caso mostrara la cantidad de pagina
          footer: function (currentPage = 0, pageCount = 0) {
             return {
                text: Datos.pdfData3.fechaCreacion + ' - Pagina ' + currentPage.toString() + ' de ' + pageCount,
@@ -699,12 +698,14 @@ export class PdfComponent implements OnInit {
          //Body
          content: [
 
+            //ENCABEZADO DEL BODY
             this.head(),
-            //ENCABEZADO
 
+            //DATA
             this.body(),
 
 
+            //LUGAR DONDE VA LA INFORMACION DESPUES DE LOS DATOS
             {
                text: 'Historial de cambios del certificado de BPM',
                margin: [10, 15, 0, 15], //[izquierda, superior, derecha, inferior].
@@ -722,8 +723,7 @@ export class PdfComponent implements OnInit {
                ],
             },
 
-
-            //final por lo general las firmas
+            //FINAL POR LO GENERAL EN ESTE EJEMPLO DONDE VA LA FIRMA
             {
                text: [
                   {
@@ -738,13 +738,13 @@ export class PdfComponent implements OnInit {
                      fontSize: 11,
                   }
                ],
-               margin: [0, 70, 0, 20], //[izquierda, superior, derecha, inferior].
+               margin: [0, 75, 0, 20], //[izquierda, superior, derecha, inferior].
             }
 
          ],
 
 
-
+         //ESTILOS PERSONALIZADOS
          styles: {
             header: {
                fontSize: 18,
@@ -802,6 +802,8 @@ export class PdfComponent implements OnInit {
             },
 
          },
+
+         //ESTILOS POR DEFECTO QUE LE DARE A TODO EL DOCUMENTO
          defaultStyle: {
             alignment: 'justify',
             fontSize: 10,
@@ -812,66 +814,5 @@ export class PdfComponent implements OnInit {
       pdfMake.createPdf(dd).open();
    }
 
-   generatePDF() {
-
-      var table = {
-         head: [
-            {
-               label: 'CENTRO DE PRODUCCION',
-            },
-            {
-               label: 'FORMA FARMACEUTICA',
-            },
-            {
-               label: 'CATEGORIA',
-            },
-         ],
-         body: [
-
-            { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
-            { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
-            { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-            { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-            { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-
-         ]
-
-      };
-
-
-      var data = [
-         { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
-         { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
-         { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-         { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-         { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-      ];
-
-      var body = [];
-
-
-      for (var i = 0; i < table.body.length; i++) {
-         var row = [data[i].name, data[i].age, data[i].country, data[i].notes];
-         body.push(row);
-      }
-
-      var docDefinition = {
-         content: [
-            {
-               table: {
-                  headerRows: 1,
-                  widths: ['*', '*', '*', '*'],
-
-                  body: [
-                     ['Name', 'Age', 'Country', 'Notes'],
-                     ...body
-                  ]
-               }
-            }
-         ]
-      };
-
-      pdfMake.createPdf(docDefinition).open();
-   }
 
 }

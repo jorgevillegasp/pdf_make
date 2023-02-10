@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Datos } from '../interfaces/data';
+import { Datos } from '../interfaces/datos';
 import * as pdfMake from "pdfmake/build/pdfmake";
 
 @Component({
