@@ -686,7 +686,7 @@ export class PdfComponent implements OnInit {
 
       }
 
-      console.log(JSON.stringify(dd));
+      //console.log(JSON.stringify(dd));
 
       pdfMake.createPdf(dd).open();
    }
