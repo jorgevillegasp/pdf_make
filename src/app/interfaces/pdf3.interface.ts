@@ -44,23 +44,8 @@ export interface Column{
 
 //en caso de insertar una tabla
 export interface Table{
-    head?: Head[];
-    body?: TableBody[];
-
-    head1?: any[];
-    body1?: any[];
-}
-
-export interface Head{
-    label: string;
-}
-
-
-export interface TableBody{
-    fila: TableFila[];
-}
-export interface TableFila{
-    label: string;
+    head?: any[];
+    body?: any[];
 }
 
 

@@ -460,54 +460,11 @@ export class Datos {
               ],
             },
             
-            {
-              table: {
-                head: [
-                  {
-                    label: 'CENTRO DE PRODUCCION',
-                  },
-                  {
-                    label: 'FORMA FARMACEUTICA',
-                  },
-                  {
-                    label: 'CATEGORIA',
-                  },
-                  {
-                    label: 'ACTIVIDA DE PRODUCTO',
-                  },
-                  {
-                    label: 'ACTIVIDA DE PRODUCTO',
-                  },
-                ],
-                body:
-                  [
-                    {
-                      fila: [
-                        {
-                          label: 'formulario_centro de produccion',
-                        },
-                        {
-                          label: 'formulario_forma farmaceutica',
-                        },
-                        {
-                          label: 'formulario_categoria',
-                        },
-                        {
-                          label: 'actividad de produccion',
-                        },
-                        {
-                          label: 'actividad de produccion',
-                        },
-                      ]
-                    }
-                  ],                  
-              },
-            },
             //ESTA ES UNA TABLA DE PRUEBA PARA
             //LAS TABLAS QUE VIENEN CON DATOS  DIFERENTES
             {
               table: {
-                head1:[
+                head:[
                   { 
                     name: 'CENTRO DE PRODUCCION', 
                     age: 'FORMA FARMACEUTICA', 
@@ -515,7 +472,7 @@ export class Datos {
                     notes: 'ACTIVIDA DE PRODUCTO',
                   }
                 ],
-                body1: [
+                body: [
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
@@ -524,76 +481,6 @@ export class Datos {
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                 ]
-              },
-            },
-
-
-            {
-              table: {
-                head: [
-                  {
-                    label: 'CENTRO DE PRODUCCION',
-                  },
-                  {
-                    label: 'FORMA FARMACEUTICA',
-                  },
-                  {
-                    label: 'CATEGORIA',
-                  },
-                ],
-                body:[
-                  {
-                    fila: [
-                      {
-                        label: 'formulario_centro de produccion',
-                      },
-                      {
-                        label: 'formulario_forma farmaceutica',
-                      },
-                      {
-                        label: 'formulario_categoria',
-                      },
-                    ],
-                  }
-                ]
-                  
-              },
-            },
-
-
-            {
-              table: {
-                head: [
-                  {
-                    label: 'CENTRO DE PRODUCCION',
-                  },
-                  {
-                    label: 'FORMA FARMACEUTICA',
-                  },
-                ],
-                body:[
-                  {
-                    fila: [
-                      {
-                        label: 'fila 1 formulario_centro de produccion',
-                      },
-                      {
-                        label: 'fila 1 formulario_forma farmaceutica',
-                      },
-                    ]
-                  },
-                  {
-                    fila: [
-                      {
-                        label: 'fila 2 formulario_centro de produccion',
-                      },
-                      {
-                        label: 'fila 2 formulario_forma farmaceutica',
-                      },
-                    ]
-                  },
-                ],
-                  
               },
             },
             {
