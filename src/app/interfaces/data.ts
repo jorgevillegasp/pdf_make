@@ -459,6 +459,7 @@ export class Datos {
                 },
               ],
             },
+            
             {
               table: {
                 head: [
@@ -502,31 +503,31 @@ export class Datos {
                   ],                  
               },
             },
-            {
-              table: {
-                head: [
-                  {
-                    label: 'CENTRO DE PRODUCCION',
-                  },
-                  {
-                    label: 'FORMA FARMACEUTICA',
-                  },
-                  {
-                    label: 'CATEGORIA',
-                  },
-                  {
-                    label: 'ACTIVIDA DE PRODUCTO',
-                  },
-                ],
-                body1: [
-                  { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
-                  { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
-                  { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-                  { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-                  { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
-                ]
-              },
-            },
+            //ESTA ES UNA TABLA DE PRUEBA PARA
+            //LAS TABLAS QUE VIENEN CON DATOS  DIFERENTES
+            // {
+            //   table: {
+            //     head1:[
+            //       { 
+            //         name: 'CENTRO DE PRODUCCION', 
+            //         age: 'FORMA FARMACEUTICA', 
+            //         country: 'CATEGORIA',
+            //         notes: 'ACTIVIDA DE PRODUCTO',
+            //       }
+            //     ],
+            //     body1: [
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //       { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+            //     ]
+            //   },
+            // },
+
+
             {
               table: {
                 head: [
@@ -558,6 +559,8 @@ export class Datos {
                   
               },
             },
+
+
             {
               table: {
                 head: [

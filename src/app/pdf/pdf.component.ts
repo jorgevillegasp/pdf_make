@@ -458,186 +458,206 @@ export class PdfComponent implements OnInit {
 
                   //Se lo va hacer de manera ceparada debido a que en el head
                   //no coge el color que uno le desea si lo recorremos con map
-
-                  if (fila.table.head.length == 1 && fila.table.body != null){
-                     return {
-                        table: {
-                           widths: ['*',],
-                           body: [
-                              [
-                                 {
-                                    text: fila.table.head[0].label,
-                                    style: 'tableHeader',
-                                 },
-                              ],
-                              [
-                                 {
-                                    text: fila.table.body[0].fila[0].label,
-                                    style: 'tableHeader',
-                                 },
-                              ],
-                           ],
-                        },
-                        style: 'table',
-                     };
-                  };
-
-                  if (fila.table.head.length == 2 && fila.table.body != null) {
-                     
-                     
-                     return {
-
-                        table: {
-                           widths: ['*', '*'],
-                           body: [
-                              [
-                                 {
-                                    text: fila.table.head[0].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[1].label,
-                                    style: 'tableHeader',
-                                 },
-                              ],
-
-                              //TODO: CUERPO
-                              fila.table.body[0].fila.map(function (body) {
-                                 return [
+                  if(fila.table.body != null && fila.table.head != null){
+                     if (fila.table.head.length == 1 && fila.table.body != null){
+                        return {
+                           table: {
+                              widths: ['*',],
+                              body: [
+                                 [
                                     {
-                                       text: body.label,
-                                       style: 'tableBody',
-                                    }
-                                 ];
-                              }),
-
-
-
-                           ],
-                        },
-                        style: 'table',
-                     };
-                  };
-
-                  if (fila.table.head.length == 3 && fila.table.body != null) {
-                     return {
-                        table: {
-                           widths: ['*', '*', '*'],
-                           body: [
-                              [
-
-                                 {
-                                    text: fila.table.head[0].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[1].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[2].label,
-                                    style: 'tableHeader',
-                                 },
-                              ],
-                              //TODO: cuerpo de la tabla
-                              fila.table.body[0].fila.map(function (body) {
-                                 return [
+                                       text: fila.table.head[0].label,
+                                       style: 'tableHeader',
+                                    },
+                                 ],
+                                 [
                                     {
-                                       text: body.label,
-                                       style: 'tableBody',
-                                    }
-                                 ];
-                              }),
-                           ],
-                        },
-                        style: 'table',
-                     };
-                  };
-
-                  if (fila.table.head.length == 4 && fila.table.body1 != null) {
-                     
-                     var body:any = [];
-
-                     fila.table.body1.map(function (data){
-                        var row = [
-                           data.name,
-                           data.age, 
-                           data.country, 
-                           data.notes
-                        ];
-                        body.push(row);
-                     });
-
-                     return {
-                        table: {
-                           widths: ['*', '*', '*', '*'],
-                           body: [
-                              //head
-                              [
-                                 {
-                                    text: 'Nombre',
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: 'Age',
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: 'Country',
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: 'Notas',
-                                    style: 'tableHeader',
-                                 }
+                                       text: fila.table.body[0].fila[0].label,
+                                       style: 'tableHeader',
+                                    },
+                                 ],
                               ],
-                              ...body
-                           ],
-                        },
-                        style: 'table',
+                           },
+                           style: 'table',
+                        };
                      };
                   }
 
-                  if (fila.table.head.length == 5 && fila.table.body != null){
-                     return {
-                        table: {
-                           widths: ['*', '*', '*', '*', '*'],
-                           body: [
-                              [
-                                 {
-                                    text: fila.table.head[0].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[1].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[2].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[3].label,
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: fila.table.head[4].label,
-                                    style: 'tableHeader',
-                                 }
-                              ],
-                              //TODO: CUERPO DE LA TABLA
-                              fila.table.body[0].fila.map(function (body) {
-                                 return [
+                  if(fila.table.body != null && fila.table.head != null){
+                     if (fila.table.head.length == 2 && fila.table.body != null) {
+                        
+                        
+                        return {
+   
+                           table: {
+                              widths: ['*', '*'],
+                              body: [
+                                 [
                                     {
-                                       text: body.label,
-                                       style: 'tableBody',
-                                    }
-                                 ];
-                              }),
-                           ],
-                        },
-                        style: 'table',
+                                       text: fila.table.head[0].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[1].label,
+                                       style: 'tableHeader',
+                                    },
+                                 ],
+   
+                                 //TODO: CUERPO
+                                 fila.table.body[0].fila.map(function (body) {
+                                    return [
+                                       {
+                                          text: body.label,
+                                          style: 'tableBody',
+                                       }
+                                    ];
+                                 }),
+   
+   
+   
+                              ],
+                           },
+                           style: 'table',
+                        };
                      };
+                  }
+
+                  if(fila.table.body != null && fila.table.head != null){
+                     if (fila.table.head.length == 3 && fila.table.body != null) {
+                        return {
+                           table: {
+                              widths: ['*', '*', '*'],
+                              body: [
+                                 [
+   
+                                    {
+                                       text: fila.table.head[0].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[1].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[2].label,
+                                       style: 'tableHeader',
+                                    },
+                                 ],
+                                 //TODO: cuerpo de la tabla
+                                 fila.table.body[0].fila.map(function (body) {
+                                    return [
+                                       {
+                                          text: body.label,
+                                          style: 'tableBody',
+                                       }
+                                    ];
+                                 }),
+                              ],
+                           },
+                           style: 'table',
+                        };
+                     };
+                  }
+
+                  // ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
+                  if(fila.table.body1 != null && fila.table.head1 != null){
+                     
+                     if (fila.table.head1.length == 4) {
+                        
+                        var body:any = [];
+                        
+                        body.push([
+                           {text: fila.table.head1[0], style: 'tableHeader',},
+                           {text: fila.table.head1[1], style: 'tableHeader',}, 
+                           {text: fila.table.head1[2], style: 'tableHeader',}, 
+                           {text: fila.table.head1[3], style: 'tableHeader',}
+                        ]);
+                     
+                        
+   
+                        fila.table.body1.map(function (data){
+                           var row = [
+                              {text: data.name, style: 'tableBody',},
+                              {text: data.age, style: 'tableBody',}, 
+                              {text: data.country, style: 'tableBody',}, 
+                              {text: data.notes, style: 'tableBody',}
+                           ];
+                           body.push(row);
+                        });
+   
+                        return {
+                           table: {
+                              widths: ['*', '*', '*', '*'],
+                              body: [
+                                 //head
+                                 [
+                                    {
+                                       text: 'CENTRO DE PRODUCCION',
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: 'FORMA FARMACEUTICA',
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: 'CATEGORIA',
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: 'ACTIVIDA DE PRODUCTO',
+                                       style: 'tableHeader',
+                                    }
+                                 ],
+                                 ...body
+                              ],
+                           },
+                           style: 'table',
+                        };
+                     }
+                  }
+                  
+                  if(fila.table.body != null && fila.table.head != null){
+                     if (fila.table.head.length == 5 && fila.table.body != null){
+                        return {
+                           table: {
+                              widths: ['*', '*', '*', '*', '*'],
+                              body: [
+                                 [
+                                    {
+                                       text: fila.table.head[0].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[1].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[2].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[3].label,
+                                       style: 'tableHeader',
+                                    },
+                                    {
+                                       text: fila.table.head[4].label,
+                                       style: 'tableHeader',
+                                    }
+                                 ],
+                                 //TODO: CUERPO DE LA TABLA
+                                 fila.table.body[0].fila.map(function (body) {
+                                    return [
+                                       {
+                                          text: body.label,
+                                          style: 'tableBody',
+                                       }
+                                    ];
+                                 }),
+                              ],
+                           },
+                           style: 'table',
+                        };
+                     }
                   }
                }
                return { text: 'NO RETORNA NADA', color: 'red' };
