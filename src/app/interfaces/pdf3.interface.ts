@@ -45,13 +45,19 @@ export interface Column{
 //en caso de insertar una tabla
 export interface Table{
     head: Head[];
-    body: Body[];
+    body: TableBody[];
+    body1: any[];
 }
 
 export interface Head{
     label: string;
 }
-export interface Body{
+
+
+export interface TableBody{
+    fila: TableFila[];
+}
+export interface TableFila{
     label: string;
 }
 

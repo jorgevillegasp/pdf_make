@@ -474,22 +474,123 @@ export class Datos {
                   {
                     label: 'ACTIVIDA DE PRODUCTO',
                   },
+                  {
+                    label: 'ACTIVIDA DE PRODUCTO',
+                  },
                 ],
                 body:
                   [
                     {
-                      label: 'formulario_centro de produccion',
-                    },
-                    {
-                      label: 'formulario_forma farmaceutica',
-                    },
-                    {
-                      label: 'formulario_categoria',
-                    },
-                    {
-                      label: 'actividad de produccion',
-                    },
-                  ],
+                      fila: [
+                        {
+                          label: 'formulario_centro de produccion',
+                        },
+                        {
+                          label: 'formulario_forma farmaceutica',
+                        },
+                        {
+                          label: 'formulario_categoria',
+                        },
+                        {
+                          label: 'actividad de produccion',
+                        },
+                        {
+                          label: 'actividad de produccion',
+                        },
+                      ]
+                    }
+                  ],                  
+              },
+            },
+            {
+              table: {
+                head: [
+                  {
+                    label: 'CENTRO DE PRODUCCION',
+                  },
+                  {
+                    label: 'FORMA FARMACEUTICA',
+                  },
+                  {
+                    label: 'CATEGORIA',
+                  },
+                  {
+                    label: 'ACTIVIDA DE PRODUCTO',
+                  },
+                ],
+                body: [
+                  { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
+                  { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
+                  { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+                  { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+                  { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+                ]
+              },
+            },
+            {
+              table: {
+                head: [
+                  {
+                    label: 'CENTRO DE PRODUCCION',
+                  },
+                  {
+                    label: 'FORMA FARMACEUTICA',
+                  },
+                  {
+                    label: 'CATEGORIA',
+                  },
+                ],
+                body:[
+                  {
+                    fila: [
+                      {
+                        label: 'formulario_centro de produccion',
+                      },
+                      {
+                        label: 'formulario_forma farmaceutica',
+                      },
+                      {
+                        label: 'formulario_categoria',
+                      },
+                    ],
+                  }
+                ]
+                  
+              },
+            },
+            {
+              table: {
+                head: [
+                  {
+                    label: 'CENTRO DE PRODUCCION',
+                  },
+                  {
+                    label: 'FORMA FARMACEUTICA',
+                  },
+                ],
+                body:[
+                  {
+                    fila: [
+                      {
+                        label: 'fila 1 formulario_centro de produccion',
+                      },
+                      {
+                        label: 'fila 1 formulario_forma farmaceutica',
+                      },
+                    ]
+                  },
+                  {
+                    fila: [
+                      {
+                        label: 'fila 2 formulario_centro de produccion',
+                      },
+                      {
+                        label: 'fila 2 formulario_forma farmaceutica',
+                      },
+                    ]
+                  },
+                ],
+                  
               },
             },
             {

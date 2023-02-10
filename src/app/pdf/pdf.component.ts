@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Datos } from '../interfaces/data';
 import * as pdfMake from "pdfmake/build/pdfmake";
+import { Fila } from '../interfaces/pdf3.interface';
+import { createUrlTreeFromSnapshot } from '@angular/router';
 
 @Component({
    selector: 'app-pdf',
@@ -14,8 +16,636 @@ export class PdfComponent implements OnInit {
    ngOnInit(): void {
    }
 
+   private head() {
+      return {
+         text: [
+            {
+               text: 'Confiere \n\n',
+               alignment: 'center'
+            },
+            {
+               text: [
+                  {
+                     text: 'El registro del certificado de Buenas Practicas de Manufactura extranjero emitido por ',
+                     alignment: 'center'
+                  },
+                  {
+                     text: '(' + Datos.pdfData3.nombreFactura + ') ',
+                     alignment: 'center',
+                     color: '#1b9aa1',
+                     bold: true,
+                  },
+                  {
+                     text: 'por lo que se le comunica que su codigo BPM es: \n\n',
+                     alignment: 'center'
+                  },
+               ],
+               alignment: 'center'
+            },
+            {
+               text: Datos.pdfData3.codigo,
+               bold: true,
+               alignment: 'center'
+            },
+            {
+               text: ' ' + Datos.pdfData3.anexo + ' \n\n',
+               color: '#1b9aa1',
+               fontSize: 9,
+            },
+            {
+               text: 'A:',
+               alignment: 'center'
+            },
+         ]
+      }
+   }
 
-   generatePDF() {
+
+   private body() {
+      return Datos.pdfData3.data.section.map(function (section) {
+         return [
+
+            //Titulo de la SECCION
+            {
+               table: {
+                  widths: ['*'],
+                  body: [
+                     [section.title,]
+                  ]
+               },
+               style: 'titleSection'
+            },
+
+
+
+            section.fila.map(function (fila) {
+
+
+
+               //SI EXISTEN COLUMNA
+               if (fila.columns != null) {
+
+                  if (fila.columns.length == 1) {
+
+                     //si es un tipo TEXT
+                     if (fila.columns[0].typeField == 'text') {
+                        return {
+
+                           text: [
+                              {
+                                 text: fila.columns[0].label + ':  ',
+                                 bold: true,
+                              },
+                              {
+                                 text: fila.columns[0].value,
+
+                                 style: 'textValor',
+                              }
+                           ],
+                           style: 'saltoLinea',
+                           fontSize: 10,
+                        }
+                     }
+
+
+                     //Si es uin tipo TextArea
+                     if (fila.columns[0].typeField == 'textArea') {
+                        return {
+                           columns: [
+                              {
+                                 stack: [
+                                    {
+                                       text: fila.columns[0].label,
+                                       style: 'label',
+                                    },
+                                    {
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 515, h: 75,
+                                             rx: 10, ry: 10,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+                                    }
+                                 ],
+                                 style: 'column',
+                              },
+                           ]
+                        }
+
+                     }
+
+                     //Si es un tipo CHECK
+                     if (fila.columns[0].typeField == 'check') {
+                        return {
+                           columns: [
+                              {
+                                 columns: [
+                                    {
+                                       width: '4%',
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 15, h: 15,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+
+                                    },
+                                    {
+                                       text: fila.columns[0].label
+                                    },
+                                 ],
+                                 style: 'column',
+                              },
+                           ]
+                        }
+                     }
+
+                     //Si es un tipo Input
+                     return {
+
+                        columns: [
+                           {
+                              stack: [
+                                 {
+                                    text: fila.columns[0].label,
+                                    style: 'label',
+                                 },
+                                 {
+                                    canvas: [
+                                       {
+                                          type: 'rect',
+                                          x: 0, y: 0, w: 515, h: 20,
+                                          rx: 10, ry: 10,
+                                          lineWidth: 0.5,
+                                          lineColor: 'black',
+                                          fillColor: 'yellow',
+                                       }
+                                    ],
+                                 }
+                              ],
+                              style: 'column',
+                           },
+                        ]
+
+                     };
+                  };
+
+
+                  if (fila.columns.length == 2) {
+
+                     //Si es un tipo CHECK
+                     if (fila.columns[0].typeField == 'check' || fila.columns[1].typeField == 'check') {
+                        return {
+                           columns: [
+                              {
+
+                                 columns: [
+                                    {
+                                       width: '8%',
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 15, h: 15,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+
+                                    },
+                                    {
+                                       text: fila.columns[0].label
+                                    },
+                                 ],
+                                 style: 'column',
+                              },
+
+                              {
+                                 columns: [
+                                    {
+                                       width: '8%',
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 15, h: 15,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+
+                                    },
+                                    {
+                                       text: fila.columns[1].label
+                                    },
+                                 ],
+                                 style: 'column',
+                              },
+                           ]
+                        };
+                     };
+
+                     //Si es un tipo Input
+                     return {
+
+                        columns: [
+                           {
+                              stack: [
+                                 {
+                                    text: fila.columns[0].label,
+                                    style: 'label',
+                                 },
+                                 {
+                                    canvas: [
+                                       {
+                                          type: 'rect',
+                                          x: 0, y: 0, w: 254, h: 20,
+                                          rx: 10, ry: 10,
+                                          lineWidth: 0.5,
+                                          lineColor: 'black',
+                                          fillColor: 'yellow',
+                                       }
+                                    ],
+                                 }
+                              ],
+                              style: 'column',
+                           },
+                           {
+                              stack: [
+                                 {
+                                    text: fila.columns[1].label,
+                                    style: 'label',
+                                 },
+                                 {
+                                    canvas: [
+                                       {
+                                          type: 'rect',
+                                          x: 0, y: 0, w: 254, h: 20,
+                                          rx: 10, ry: 10,
+                                          lineWidth: 0.5,
+                                          lineColor: 'black',
+                                          fillColor: 'yellow',
+                                       }
+                                    ],
+                                 }
+                              ],
+                              style: 'column',
+                           },
+                        ]
+
+                     };
+                  };
+
+
+                  if (fila.columns.length == 3) {
+
+                     //Si es un tipo CHECK
+                     if (fila.columns[0].typeField == 'check' || fila.columns[1].typeField == 'check' || fila.columns[2].typeField == 'check') {
+                        return {
+                           columns: [
+                              {
+                                 columns: [
+                                    {
+                                       width: '12%',
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 15, h: 15,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+
+                                    },
+                                    {
+                                       text: fila.columns[0].label
+                                    },
+                                 ],
+                                 style: 'column',
+                              },
+
+                              {
+                                 columns: [
+                                    {
+                                       width: '12%',
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 15, h: 15,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+
+                                    },
+                                    {
+                                       text: fila.columns[1].label
+                                    },
+                                 ],
+                                 style: 'column',
+                              },
+                              {
+                                 columns: [
+                                    {
+                                       width: '12%',
+                                       canvas: [
+                                          {
+                                             type: 'rect',
+                                             x: 0, y: 0, w: 15, h: 15,
+                                             lineWidth: 0.5,
+                                             lineColor: 'black',
+                                             fillColor: 'yellow',
+                                          }
+                                       ],
+
+                                    },
+                                    {
+                                       text: fila.columns[2].label
+                                    },
+                                 ],
+                                 style: 'column',
+                              },
+                           ]
+                        };
+                     };
+
+                     //Si es un tipo Input
+                     return {
+
+                        columns: [
+                           {
+                              stack: [
+                                 {
+                                    text: fila.columns[0].label,
+                                    style: 'label',
+                                 },
+                                 {
+                                    canvas: [
+                                       {
+                                          type: 'rect',
+                                          x: 0, y: 0, w: 167, h: 20,
+                                          rx: 10, ry: 10,
+                                          lineWidth: 0.5,
+                                          lineColor: 'black',
+                                          fillColor: 'yellow',
+                                       }
+                                    ],
+                                 }
+                              ],
+                              style: 'column',
+                           },
+                           {
+                              stack: [
+                                 {
+                                    text: fila.columns[1].label,
+                                    style: 'label',
+                                 },
+                                 {
+                                    canvas: [
+                                       {
+                                          type: 'rect',
+                                          x: 0, y: 0, w: 167, h: 20,
+                                          rx: 10, ry: 10,
+                                          lineWidth: 0.5,
+                                          lineColor: 'black',
+                                          fillColor: 'yellow',
+                                       }
+                                    ],
+                                 }
+                              ],
+                              style: 'column',
+                           },
+                           {
+                              stack: [
+                                 {
+                                    text: fila.columns[2].label,
+                                    style: 'label',
+                                 },
+                                 {
+                                    canvas: [
+                                       {
+                                          type: 'rect',
+                                          x: 0, y: 0, w: 167, h: 20,
+                                          rx: 10, ry: 10,
+                                          lineWidth: 0.5,
+                                          lineColor: 'black',
+                                          fillColor: 'yellow',
+                                       }
+                                    ],
+                                 }
+                              ],
+                              style: 'column',
+                           },
+                        ]
+
+                     };
+                  };
+
+               }
+
+               //SI EXISTE UNA TABLA
+               if (fila.table != null) {
+
+
+                  //Se lo va hacer de manera ceparada debido a que en el head
+                  //no coge el color que uno le desea si lo recorremos con map
+
+                  if (fila.table.head.length == 1) {
+                     return {
+                        table: {
+                           widths: ['*',],
+                           body: [
+                              [
+                                 {
+                                    text: fila.table.head[0].label,
+                                    style: 'tableHeader',
+                                 },
+                              ],
+                              [
+                                 {
+                                    text: fila.table.body[0].fila[0].label,
+                                    style: 'tableHeader',
+                                 },
+                              ],
+                           ],
+                        },
+                        style: 'table',
+                     };
+                  };
+
+                  if (fila.table.head.length == 2) {
+                     
+                     
+                     return {
+
+                        table: {
+                           widths: ['*', '*'],
+                           body: [
+                              [
+                                 {
+                                    text: fila.table.head[0].label,
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[1].label,
+                                    style: 'tableHeader',
+                                 },
+                              ],
+
+                              //TODO: CUERPO
+                              
+
+
+
+                           ],
+                        },
+                        style: 'table',
+                     };
+                  };
+
+                  if (fila.table.head.length == 3) {
+                     return {
+                        table: {
+                           widths: ['*', '*', '*'],
+                           body: [
+                              [
+
+                                 {
+                                    text: fila.table.head[0].label,
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[1].label,
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[2].label,
+                                    style: 'tableHeader',
+                                 },
+                              ],
+                              //TODO: cuerpo de la tabla
+                              // fila.table.body[0].fila.map(function (body) {
+                              //    return [
+                              //       {
+                              //          text: body.label,
+                              //          style: 'tableBody',
+                              //       }
+                              //    ];
+                              // }),
+                           ],
+                        },
+                        style: 'table',
+                     };
+                  };
+
+                  if (fila.table.head.length == 4) {
+                     var body:any = [];
+
+                     fila.table.body1.map(function (data){
+                        var row = [
+                           data.name, 
+                           data.age, 
+                           data.country, 
+                           data.notes
+                        ];
+                        body.push(row);
+                     });
+
+                     return {
+                        table: {
+                           widths: ['*', '*', '*', '*'],
+                           body: [
+                              [
+                                 {
+                                    text: fila.table.head[0].label,
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[1].label,
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[2].label,
+                                    style: 'tableHeader',
+                                 },
+                                 {
+                                    text: fila.table.head[3].label,
+                                    style: 'tableHeader',
+                                 }
+                              ],
+                              ...body
+                              // TODO: cueropo de la tabla
+                              // fila.table.body[0].fila.map(function (body) {
+                              //    return [
+                              //       {
+                              //          text: body.label,
+                              //          style: 'tableBody',
+                              //       }
+                              //    ];
+                              // }),
+                           ],
+                        },
+                        style: 'table',
+                     };
+                  }
+
+                  return {
+                     table: {
+                        widths: ['*', '*', '*', '*', '*'],
+                        body: [
+                           [
+                              {
+                                 text: fila.table.head[0].label,
+                                 style: 'tableHeader',
+                              },
+                              {
+                                 text: fila.table.head[1].label,
+                                 style: 'tableHeader',
+                              },
+                              {
+                                 text: fila.table.head[2].label,
+                                 style: 'tableHeader',
+                              },
+                              {
+                                 text: fila.table.head[3].label,
+                                 style: 'tableHeader',
+                              },
+                              {
+                                 text: fila.table.head[4].label,
+                                 style: 'tableHeader',
+                              }
+                           ],
+                           //TODO: CUERPO DE LA TABLA
+                           // fila.table.body[0].fila.map(function (body) {
+                           //    return [
+                           //       {
+                           //          text: body.label,
+                           //          style: 'tableBody',
+                           //       }
+                           //    ];
+                           // }),
+                        ],
+                     },
+                     style: 'table',
+                  };
+               }
+               return { text: 'NO RETORNA NADA', color: 'red' };
+            })
+         ];
+      });
+   }
+
+
+   generatePDF1() {
 
       var dd: any = {
          pageSize: 'A4',
@@ -26,7 +656,7 @@ export class PdfComponent implements OnInit {
          //    alignment: 'center',
          //    style: 'header'
          // },
-         
+
          //FONDO DE AGUA
          watermark: {
             text: Datos.pdfData3.fondoAgua,
@@ -46,503 +676,12 @@ export class PdfComponent implements OnInit {
 
          //Body
          content: [
+
+            this.head(),
             //ENCABEZADO
-            {
-               text: [
-                  {
-                     text: 'Confiere \n\n',
-                     alignment: 'center'
-                  },
-                  {
-                     text: [
-                        {
-                           text: 'El registro del certificado de Buenas Practicas de Manufactura extranjero emitido por ',
-                           alignment: 'center'
-                        },
-                        {
-                           text: '(' + Datos.pdfData3.nombreFactura + ') ',
-                           alignment: 'center',
-                           color: '#1b9aa1',
-                           bold: true,
-                        },
-                        {
-                           text: 'por lo que se le comunica que su codigo BPM es: \n\n',
-                           alignment: 'center'
-                        },
-                     ],
-                     alignment: 'center'
-                  },
-                  {
-                     text: Datos.pdfData3.codigo,
-                     bold: true,
-                     alignment: 'center'
-                  },
-                  {
-                     text: ' ' + Datos.pdfData3.anexo + ' \n\n',
-                     color: '#1b9aa1',
-                     fontSize: 9,
-                  },
-                  {
-                     text: 'A:',
-                     alignment: 'center'
-                  },
-               ]
-            },
 
+            this.body(),
 
-
-            Datos.pdfData3.data.section.map(function (section) {
-               return [
-
-                  {
-                     table: {
-                        widths: ['*'],
-                        body: [
-                           [section.title,]
-                        ]
-                     },
-                     style: 'titleSection'
-                  },
-
-
-                  section.fila.map(function (fila) {
-
-                     //SI EXISTEN COLUMNA
-                     if (fila.columns != null) {
-
-                        if (fila.columns.length == 1) {
-
-                           //si es un tipo TEXT
-                           if (fila.columns[0].typeField == 'text') {
-                              return {
-                                 text: [
-                                    {
-                                       text: fila.columns[0].label + ':  ',
-                                       bold: true,
-                                    },
-                                    {
-                                       text: fila.columns[0].value,
-
-                                       style: 'textValor',
-                                    }
-                                 ],
-                                 style: 'saltoLinea',
-                                 fontSize: 10,
-                              }
-                           }
-
-
-                           //Si es uin tipo TextArea
-                           if (fila.columns[0].typeField == 'textArea') {
-                              return {
-                                 columns: [
-                                    {
-                                       stack: [
-                                          {
-                                             text: fila.columns[0].label,
-                                             style: 'label',
-                                          },
-                                          {
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 515, h: 75,
-                                                   rx: 10, ry: 10,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-                                          }
-                                       ],
-                                       style: 'column',
-                                    },
-                                 ]
-                              }
-
-                           }
-
-                           //Si es un tipo CHECK
-                           if (fila.columns[0].typeField == 'check') {
-                              return {
-                                 columns: [
-                                    {
-                                       columns: [
-                                          {
-                                             width: '4%',
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 15, h: 15,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-
-                                          },
-                                          {
-                                             text: fila.columns[0].label
-                                          },
-                                       ],
-                                       style: 'column',
-                                    },
-                                 ]
-                              }
-                           }
-
-                           //Si es un tipo Input
-                           return {
-
-                              columns: [
-                                 {
-                                    stack: [
-                                       {
-                                          text: fila.columns[0].label,
-                                          style: 'label',
-                                       },
-                                       {
-                                          canvas: [
-                                             {
-                                                type: 'rect',
-                                                x: 0, y: 0, w: 515, h: 20,
-                                                rx: 10, ry: 10,
-                                                lineWidth: 0.5,
-                                                lineColor: 'black',
-                                                fillColor: 'yellow',
-                                             }
-                                          ],
-                                       }
-                                    ],
-                                    style: 'column',
-                                 },
-                              ]
-
-                           };
-                        };
-
-
-                        if (fila.columns.length == 2) {
-
-                           //Si es un tipo CHECK
-                           if (fila.columns[0].typeField == 'check' || fila.columns[1].typeField == 'check') {
-                              return {
-                                 columns: [
-                                    {
-
-                                       columns: [
-                                          {
-                                             width: '8%',
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 15, h: 15,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-
-                                          },
-                                          {
-                                             text: fila.columns[0].label
-                                          },
-                                       ],
-                                       style: 'column',
-                                    },
-
-                                    {
-                                       columns: [
-                                          {
-                                             width: '8%',
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 15, h: 15,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-
-                                          },
-                                          {
-                                             text: fila.columns[1].label
-                                          },
-                                       ],
-                                       style: 'column',
-                                    },
-                                 ]
-                              };
-                           };
-
-                           //Si es un tipo Input
-                           return {
-
-                              columns: [
-                                 {
-                                    stack: [
-                                       {
-                                          text: fila.columns[0].label,
-                                          style: 'label',
-                                       },
-                                       {
-                                          canvas: [
-                                             {
-                                                type: 'rect',
-                                                x: 0, y: 0, w: 254, h: 20,
-                                                rx: 10, ry: 10,
-                                                lineWidth: 0.5,
-                                                lineColor: 'black',
-                                                fillColor: 'yellow',
-                                             }
-                                          ],
-                                       }
-                                    ],
-                                    style: 'column',
-                                 },
-                                 {
-                                    stack: [
-                                       {
-                                          text: fila.columns[1].label,
-                                          style: 'label',
-                                       },
-                                       {
-                                          canvas: [
-                                             {
-                                                type: 'rect',
-                                                x: 0, y: 0, w: 254, h: 20,
-                                                rx: 10, ry: 10,
-                                                lineWidth: 0.5,
-                                                lineColor: 'black',
-                                                fillColor: 'yellow',
-                                             }
-                                          ],
-                                       }
-                                    ],
-                                    style: 'column',
-                                 },
-                              ]
-
-                           };
-                        };
-
-
-                        if (fila.columns.length == 3) {
-
-                           //Si es un tipo CHECK
-                           if (fila.columns[0].typeField == 'check' || fila.columns[1].typeField == 'check' || fila.columns[2].typeField == 'check') {
-                              return {
-                                 columns: [
-                                    {
-                                       columns: [
-                                          {
-                                             width: '12%',
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 15, h: 15,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-
-                                          },
-                                          {
-                                             text: fila.columns[0].label
-                                          },
-                                       ],
-                                       style: 'column',
-                                    },
-
-                                    {
-                                       columns: [
-                                          {
-                                             width: '12%',
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 15, h: 15,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-
-                                          },
-                                          {
-                                             text: fila.columns[1].label
-                                          },
-                                       ],
-                                       style: 'column',
-                                    },
-                                    {
-                                       columns: [
-                                          {
-                                             width: '12%',
-                                             canvas: [
-                                                {
-                                                   type: 'rect',
-                                                   x: 0, y: 0, w: 15, h: 15,
-                                                   lineWidth: 0.5,
-                                                   lineColor: 'black',
-                                                   fillColor: 'yellow',
-                                                }
-                                             ],
-
-                                          },
-                                          {
-                                             text: fila.columns[2].label
-                                          },
-                                       ],
-                                       style: 'column',
-                                    },
-                                 ]
-                              };
-                           };
-
-                           //Si es un tipo Input
-                           return {
-
-                              columns: [
-                                 {
-                                    stack: [
-                                       {
-                                          text: fila.columns[0].label,
-                                          style: 'label',
-                                       },
-                                       {
-                                          canvas: [
-                                             {
-                                                type: 'rect',
-                                                x: 0, y: 0, w: 167, h: 20,
-                                                rx: 10, ry: 10,
-                                                lineWidth: 0.5,
-                                                lineColor: 'black',
-                                                fillColor: 'yellow',
-                                             }
-                                          ],
-                                       }
-                                    ],
-                                    style: 'column',
-                                 },
-                                 {
-                                    stack: [
-                                       {
-                                          text: fila.columns[1].label,
-                                          style: 'label',
-                                       },
-                                       {
-                                          canvas: [
-                                             {
-                                                type: 'rect',
-                                                x: 0, y: 0, w: 167, h: 20,
-                                                rx: 10, ry: 10,
-                                                lineWidth: 0.5,
-                                                lineColor: 'black',
-                                                fillColor: 'yellow',
-                                             }
-                                          ],
-                                       }
-                                    ],
-                                    style: 'column',
-                                 },
-                                 {
-                                    stack: [
-                                       {
-                                          text: fila.columns[2].label,
-                                          style: 'label',
-                                       },
-                                       {
-                                          canvas: [
-                                             {
-                                                type: 'rect',
-                                                x: 0, y: 0, w: 167, h: 20,
-                                                rx: 10, ry: 10,
-                                                lineWidth: 0.5,
-                                                lineColor: 'black',
-                                                fillColor: 'yellow',
-                                             }
-                                          ],
-                                       }
-                                    ],
-                                    style: 'column',
-                                 },
-                              ]
-
-                           };
-                        };
-
-                     }
-
-                     //SI EXISTE UNA TABLA
-                     if (fila.table != null) {
-
-                        return {
-                           table: {
-                              body: [
-                                 [
-                                    {
-                                       text: fila.table.head[0].label,
-                                       style: 'tableHeader',
-                                    },
-                                    {
-                                       text: fila.table.head[1].label,
-                                       style: 'tableHeader',
-                                    },
-                                    {
-                                       text: fila.table.head[2].label,
-                                       style: 'tableHeader',
-                                    },
-                                    {
-                                       text: fila.table.head[3].label,
-                                       style: 'tableHeader',
-                                    }
-                                 ],
-                                 fila.table.body.map(function (body) {
-                                    return [
-                                       {
-                                          text: body.label,
-                                          style: 'tableBody',
-                                       }
-                                    ];
-                                 }),
-                              ],
-                           },
-                           style: 'table',
-                        };
-
-                        /*
-                        return {
-                           table: {
-                              body: [
-                                 fila.table.head.map(function (head) {
-                                    return [
-                                       {
-                                          text: head.label,
-                                          style: 'tableHeader',
-                                       }
-                                    ];
-                                 }),
-                                 fila.table.body.map(function (body) {
-                                    return [
-                                       {
-                                          text: body.label,
-                                          style: 'tableBody',
-                                       }
-                                    ];
-                                 }),
-                              ],
-                           },
-                           style: 'table',
-                        };
-                        */
-                     }
-                     return { text: 'NO RETORNA NADA', color: 'red' };
-                  })
-               ];
-            }),
 
             {
                text: 'Historial de cambios del certificado de BPM',
@@ -557,58 +696,10 @@ export class PdfComponent implements OnInit {
                   },
                   {
                      text: 'de registro del certificado de Buenas Practicas de Manufactura extranjera',
-
                   }
                ],
             },
 
-
-            //TIPO TABLA
-            /*
-            {
-               table: {
-                  body: [
-                     [
-                        {
-                           text: 'CENTRO DE PRODUCCION',
-                           style: 'tableHeader',
-                        },
-                        {
-                           text: 'FORMA FARMACEUTICA',
-                           style: 'tableHeader',
-                        },
-                        {
-                           text: 'CATEGORIA',
-                           style: 'tableHeader',
-                        },
-                        {
-                           text: 'ACTIVIDA DE PRODUCTO',
-                           style: 'tableHeader',
-                        },
-                     ],
-                     [
-                        {
-                           text: 'formulario_centro de produccion',
-                           style: 'tableBody',
-                        },
-                        {
-                           text: 'formulario_forma farmaceutica',
-                           style: 'tableBody',
-                        },
-                        {
-                           text: 'formulario_categoria',
-                           style: 'tableBody',
-                        },
-                        {
-                           text: 'actividad de produccion',
-                           style: 'tableBody',
-                        },
-                     ],
-                  ]
-               },
-               style: 'table',
-            },
-            */
 
             //final por lo general las firmas
             {
@@ -625,7 +716,7 @@ export class PdfComponent implements OnInit {
                      fontSize: 11,
                   }
                ],
-               margin: [0, 50, 0, 20], //[izquierda, superior, derecha, inferior].
+               margin: [0, 70, 0, 20], //[izquierda, superior, derecha, inferior].
             }
 
          ],
@@ -697,6 +788,68 @@ export class PdfComponent implements OnInit {
       }
 
       pdfMake.createPdf(dd).open();
+   }
+
+   generatePDF() {
+
+      var table = {
+         head: [
+            {
+               label: 'CENTRO DE PRODUCCION',
+            },
+            {
+               label: 'FORMA FARMACEUTICA',
+            },
+            {
+               label: 'CATEGORIA',
+            },
+         ],
+         body: [
+
+            { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
+            { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
+            { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+            { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+            { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+
+         ]
+
+      };
+
+
+      var data = [
+         { name: 'John', age: 25, country: 'USA', notes: 'Some notes' },
+         { name: 'Michael', age: 35, country: 'Canada', notes: 'More notes' },
+         { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+         { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+         { name: 'Sarah', age: 42, country: 'UK', notes: 'Final notes' },
+      ];
+
+      var body = [];
+
+
+      for (var i = 0; i < table.body.length; i++) {
+         var row = [data[i].name, data[i].age, data[i].country, data[i].notes];
+         body.push(row);
+      }
+
+      var docDefinition = {
+         content: [
+            {
+               table: {
+                  headerRows: 1,
+                  widths: ['*', '*', '*', '*'],
+
+                  body: [
+                     ['Name', 'Age', 'Country', 'Notes'],
+                     ...body
+                  ]
+               }
+            }
+         ]
+      };
+
+      pdfMake.createPdf(docDefinition).open();
    }
 
 }
