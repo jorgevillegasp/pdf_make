@@ -13,4 +13,6 @@ Dentro podra encontrar ejemplos de su uso, tales como:
 * PDF tipo formulario de ingreso de datos
 * PDF tipo con sus tablas
 
-![Mostar un PDF generado con plantilla ](/muestrafinal.png)
+![Mostar un PDF generado con plantilla](/src/img/muestrafinal.png)
+![PDF tipo formulario de ingreso de datos](/src/img/inputs.png.png)
+![PDF tipo con sus tablas](/src/img/tablas.png.png)
