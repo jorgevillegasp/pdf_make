@@ -12,3 +12,5 @@ Dentro podra encontrar ejemplos de su uso, tales como:
 * Mostar un PDF generado con plantilla 
 * PDF tipo formulario de ingreso de datos
 * PDF tipo con sus tablas
+
+![Mostar un PDF generado con plantilla ](/muestrafinal.png)
