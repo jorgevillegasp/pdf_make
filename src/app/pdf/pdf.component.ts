@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Datos } from '../interfaces/datos';
+import { Component, Input, OnInit } from '@angular/core';
 import * as pdfMake from "pdfmake/build/pdfmake";
-import { DataTableColumnI } from '../interfaces/pdf3.interface';
+import { Pdf3 } from '../interfaces/pdf3.interface';
+import { Datos } from '../interfaces/datos';
 
 
 @Component({
@@ -10,6 +10,10 @@ import { DataTableColumnI } from '../interfaces/pdf3.interface';
    styleUrls: ['./pdf.component.scss']
 })
 export class PdfComponent implements OnInit {
+
+
+
+   @Input() data!: Pdf3;
 
 
 
@@ -34,7 +38,7 @@ export class PdfComponent implements OnInit {
                      alignment: 'center'
                   },
                   {
-                     text: '(' + Datos.pdfData3.nombreFactura + ') ',
+                     text: '(' + this.data.nombreFactura + ') ',
                      alignment: 'center',
                      color: '#1b9aa1',
                      bold: true,
@@ -47,12 +51,12 @@ export class PdfComponent implements OnInit {
                alignment: 'center'
             },
             {
-               text: Datos.pdfData3.codigo,
+               text: this.data.codigo,
                bold: true,
                alignment: 'center'
             },
             {
-               text: ' ' + Datos.pdfData3.anexo + ' \n\n',
+               text: ' ' + this.data.anexo + ' \n\n',
                color: '#1b9aa1',
                fontSize: 9,
             },
@@ -66,7 +70,7 @@ export class PdfComponent implements OnInit {
 
 
    private body() {
-      return Datos.pdfData3.data.section.map(function (section) {
+      return this.data.data.section.map(function (section) {
          return [
 
             //Titulo de la SECCION
@@ -97,6 +101,7 @@ export class PdfComponent implements OnInit {
                 * No podran haber mas de 3 elementos (teniendo encuenta que ese 
                 * el maximo establecido por nosotros).
                 */
+               
                if (fila.columns != null) {
 
                   if (fila.columns.length == 1) {
@@ -592,6 +597,7 @@ export class PdfComponent implements OnInit {
                //SI EXISTE UNA TABLA
                if (fila.table != null) {
 
+
                   //ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
                   if (fila.table.body != null && fila.table.head != null) {
 
@@ -679,11 +685,17 @@ export class PdfComponent implements OnInit {
                   }
 
                }
+
+               
+
+
                return { text: 'NO RETORNA NADA', color: 'red' };
             })
          ];
       });
    }
+
+
    generatePDF() {
 
       var dd: any = {
@@ -692,7 +704,7 @@ export class PdfComponent implements OnInit {
          //FONDO DE AGUA
          //aparecera si exite un valor dentro
          watermark: {
-            text: Datos.pdfData3.fondoAgua,
+            text: this.data.fondoAgua +' '+ this.data.fechaCreacion,
             color: '#C0D1EB',
             opacity: 0.5,
             bold: true,
@@ -703,7 +715,7 @@ export class PdfComponent implements OnInit {
          //en este caso mostrara la cantidad de pagina
          footer: function (currentPage = 0, pageCount = 0) {
             return {
-               text: Datos.pdfData3.fechaCreacion + ' - Pagina ' + currentPage.toString() + ' de ' + pageCount,
+               text: 'Pagina ' + currentPage.toString() + ' de ' + pageCount,
                style: 'footer',
             };
          },
@@ -828,6 +840,7 @@ export class PdfComponent implements OnInit {
 
       pdfMake.createPdf(dd).open();
    }
+
 
 
 }
