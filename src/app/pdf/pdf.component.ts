@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Datos } from '../interfaces/datos';
 import * as pdfMake from "pdfmake/build/pdfmake";
-import { Fila } from '../interfaces/pdf3.interface';
-import { createUrlTreeFromSnapshot } from '@angular/router';
+import { DataTableColumnI } from '../interfaces/pdf3.interface';
+
 
 @Component({
    selector: 'app-pdf',
@@ -83,12 +83,35 @@ export class PdfComponent implements OnInit {
 
 
 
-               //SI EXISTEN COLUMNA
+
+               /**
+                * SI EXISTEN COLUMNA:
+                * 
+                * SI en el json en la parte columna tiene contenido, se creara.
+                * 
+                * En el caso de solo haber 1 resultado usaremos todo el ancho.
+                * En el cado de haber 2. Se dibide en 2 partes en todo el ancho
+                * En el caso de haber 3. Se dibide en 3 partes en todo el ancho.
+                * 
+                * No podran haber mas de 3 elementos (denido a que ese el maximo
+                * establecido por nosotros).
+                */
                if (fila.columns != null) {
 
                   if (fila.columns.length == 1) {
 
-                     //si es un tipo TEXT
+                     /**
+                      * En el caso de ser de tipo TEXT.
+                      * 
+                      * se creara dos valores, una es la etiketa que va a parecer
+                      * a lado izquiedo y la segunda sera el resultado que se piensa
+                      * mostrar 
+                      * 
+                      * ej:
+                      * 
+                      * Nombre: Jorge
+                      * Apellido: Villegas
+                      */
                      if (fila.columns[0].typeField == 'text') {
                         return {
 
@@ -99,7 +122,6 @@ export class PdfComponent implements OnInit {
                               },
                               {
                                  text: fila.columns[0].value,
-
                                  style: 'textValor',
                               }
                            ],
@@ -108,7 +130,13 @@ export class PdfComponent implements OnInit {
                         }
                      }
 
-                     //Si es un tipo TextArea
+
+                     /**
+                      * Si es un tipo TEXTAREA
+                      * 
+                      * Se crearan dos elementos. uno de tipo label y otro de input.
+                      * la etiketa aparecera ensima del elemento de input de gran tamaño.
+                      */
                      if (fila.columns[0].typeField == 'textArea') {
                         return {
                            columns: [
@@ -138,7 +166,11 @@ export class PdfComponent implements OnInit {
 
                      }
 
-                     //Si es un tipo CHECK
+                     /**
+                      * Si es un tipo CHECK
+                      * 
+                      * SE creara dos elementos. Uno de tipo label y otro en forma de cuadrado
+                      */
                      if (fila.columns[0].typeField == 'check') {
                         return {
                            columns: [
@@ -205,7 +237,6 @@ export class PdfComponent implements OnInit {
                         return {
                            columns: [
                               {
-
                                  columns: [
                                     {
                                        width: '8%',
@@ -251,6 +282,49 @@ export class PdfComponent implements OnInit {
                            ]
                         };
                      };
+
+                     if (fila.columns[0].typeField == 'text' || fila.columns[1].typeField == 'text') {
+                        return {
+                           columns: [
+                              {
+                                 columns: [
+                                    {
+                                       text: [
+                                          {
+                                             text: fila.columns[0].label + ':  ',
+                                             bold: true,
+                                          },
+                                          {
+                                             text: fila.columns[0].value,
+                                             style: 'textValor',
+                                          }
+                                       ],
+                                       style: 'saltoLinea',
+                                       fontSize: 10,
+                                    },
+                                 ],
+                              },
+                              {
+                                 columns: [
+                                    {
+                                       text: [
+                                          {
+                                             text: fila.columns[1].label + ':  ',
+                                             bold: true,
+                                          },
+                                          {
+                                             text: fila.columns[1].value,
+                                             style: 'textValor',
+                                          }
+                                       ],
+                                       style: 'saltoLinea',
+                                       fontSize: 10,
+                                    },
+                                 ],
+                              },
+                           ],
+                        };
+                     }
 
                      //Si es un tipo Input
                      return {
@@ -378,6 +452,67 @@ export class PdfComponent implements OnInit {
                         };
                      };
 
+                     if (fila.columns[0].typeField == 'text' || fila.columns[1].typeField == 'text' || fila.columns[2].typeField == 'text') {
+                        return {
+                           columns: [
+                              {
+                                 columns: [
+                                    {
+                                       text: [
+                                          {
+                                             text: fila.columns[0].label + ':  ',
+                                             bold: true,
+                                          },
+                                          {
+                                             text: fila.columns[0].value,
+                                             style: 'textValor',
+                                          }
+                                       ],
+                                       style: 'saltoLinea',
+                                       fontSize: 10,
+                                    },
+                                 ],
+                              },
+                              {
+                                 columns: [
+                                    {
+                                       text: [
+                                          {
+                                             text: fila.columns[1].label + ':  ',
+                                             bold: true,
+                                          },
+                                          {
+                                             text: fila.columns[1].value,
+                                             style: 'textValor',
+                                          }
+                                       ],
+                                       style: 'saltoLinea',
+                                       fontSize: 10,
+                                    },
+                                 ],
+                              },
+                              {
+                                 columns: [
+                                    {
+                                       text: [
+                                          {
+                                             text: fila.columns[2].label + ':  ',
+                                             bold: true,
+                                          },
+                                          {
+                                             text: fila.columns[2].value,
+                                             style: 'textValor',
+                                          }
+                                       ],
+                                       style: 'saltoLinea',
+                                       fontSize: 10,
+                                    },
+                                 ],
+                              },
+                           ],
+                        };
+                     }
+
                      //Si es un tipo Input
                      return {
 
@@ -485,7 +620,10 @@ export class PdfComponent implements OnInit {
    
                      }
                   */
-                  // ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
+
+                  /**
+                   * ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
+                   */
                   if (fila.table.body != null && fila.table.head != null) {
 
 
@@ -544,7 +682,10 @@ export class PdfComponent implements OnInit {
          ];
       });
    }
-
+   tableColumns: DataTableColumnI[] = [
+      {name: "Name", dataKey: "nombre"},
+      {name: "Apellido", dataKey: "apellido"},
+   ];
 
    generatePDF() {
 
@@ -684,6 +825,24 @@ export class PdfComponent implements OnInit {
             fontSize: 10,
          }
 
+      }
+
+      var data:any = [
+         { nombre: "John Doe",apellido: 'Pedro', age: 35, country: "USA" }, 
+         
+         { nombre: "Jane Doe", apellido: 'Jorge', age: 30, country: "Canada" }, 
+         { nombre: "Jim Smith", apellido: 'Lucas',  age: 40, country: "UK" }
+      ];
+      var key = "name";
+
+
+      
+
+      for (var i = 0; i < data.length; i++) {
+         this.tableColumns.map(function (key) {
+            let value = data[i][key.dataKey];
+            console.log(value);
+         });
       }
 
       //console.log(JSON.stringify(dd));

@@ -324,6 +324,82 @@ export class Datos {
     data: {
       section: [
         {
+          title: 'Test',
+          fila: [
+            {
+              columns: [
+                {
+                  typeField: 'text',
+                  label: 'Nombre',
+                  value : 'Jorge Washington',
+                },
+                {
+                  typeField: 'text',
+                  label: 'Apellido',
+                  value : 'Villegas Polanco',
+                },
+                {
+                  typeField: 'input',
+                  label: 'Apellido',
+                  value : 'Villegas Polanco',
+                },
+              ],
+            },
+            {
+              columns: [
+                {
+                  typeField: 'check',
+                  label: 'Masculino'
+                },
+                {
+                  typeField: 'check',
+                  label: 'Femenino'
+                },
+                {
+                  typeField: 'check',
+                  label: 'Otros'
+                },
+              ]
+            },
+            {
+              columns: [
+                {
+                  typeField: 'input',
+                  label: 'nombre'
+                },
+              ]
+            },
+            {
+              columns: [
+                {
+                  typeField: 'input',
+                  label: 'Nombre'
+                },
+                {
+                  typeField: 'input',
+                  label: 'Apellido'
+                },
+              ]
+            },
+            {
+              columns: [
+                {
+                  typeField: 'input',
+                  label: 'Nombre'
+                },
+                {
+                  typeField: 'input',
+                  label: 'Apellido'
+                },
+                {
+                  typeField: 'input',
+                  label: 'Telefono'
+                },
+              ]
+            },
+          ],
+        },
+        {
           title: 'DATOS GENERALES DEL LABORATORIO FARMACEUTICO EXTRANJERO',
           fila: [
             {
