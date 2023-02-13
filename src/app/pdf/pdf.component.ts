@@ -12,12 +12,7 @@ import { DataTableColumnI } from '../interfaces/pdf3.interface';
 export class PdfComponent implements OnInit {
 
 
-   tableColumns: DataTableColumnI[] = [
-      { name: "Name", dataKey: "name" },
-      { name: "Edad", dataKey: "age" },
-      { name: "Ciudad", dataKey: "country" },
-      { name: "Notas", dataKey: "notes" },
-   ];
+
 
    constructor() { }
 
@@ -90,8 +85,6 @@ export class PdfComponent implements OnInit {
             section.fila.map(function (fila) {
 
 
-
-
                /**
                 * SI EXISTEN COLUMNA:
                 * 
@@ -101,8 +94,8 @@ export class PdfComponent implements OnInit {
                 * En el cado de haber 2. Se dibide en 2 partes en todo el ancho
                 * En el caso de haber 3. Se dibide en 3 partes en todo el ancho.
                 * 
-                * No podran haber mas de 3 elementos (denido a que ese el maximo
-                * establecido por nosotros).
+                * No podran haber mas de 3 elementos (teniendo encuenta que ese 
+                * el maximo establecido por nosotros).
                 */
                if (fila.columns != null) {
 
@@ -595,60 +588,45 @@ export class PdfComponent implements OnInit {
 
                }
 
+               
                //SI EXISTE UNA TABLA
                if (fila.table != null) {
 
-                  /*
-                     //Se lo va hacer de manera ceparada debido a que en el head
-                     //no coge el color que uno le desea si lo recorremos con map
-                     if(fila.table.body != null && fila.table.head != null){
-                        if (fila.table.head.length == 1 && fila.table.body != null){
-                           return {
-                              table: {
-                                 widths: ['*',],
-                                 body: [
-                                    [
-                                       {
-                                          text: fila.table.head[0].label,
-                                          style: 'tableHeader',
-                                       },
-                                    ],
-                                    [
-                                       {
-                                          text: fila.table.body[0].fila[0].label,
-                                          style: 'tableHeader',
-                                       },
-                                    ],
-                                 ],
-                              },
-                              style: 'table',
-                           };
-                        };
-                     }
-   
-                     }
-                  */
-
-                  /**
-                   * ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
-                   */
+                  //ESTA ES UNA TABLA DIFERENTE PARA PRUEBA DE OTRO TIPO
                   if (fila.table.body != null && fila.table.head != null) {
 
+                     /**                     
+                      * Arreglo de datos que vamos a usar para almacenar lo que 
+                      * contendra el encabezado de la tabla
+                      */
+                     var head: any = [];
 
+                     /**                     
+                      * Arreglo de datos que vamos a usar para almacenar lo que 
+                      * contendra el cuerpo de la tabla
+                      */
                      var body: any = [];
 
-                     // body.push([
-                     //    { text: 'CENTRO DE PRODUCCION', style: 'tableHeader', },
-                     //    { text: 'FORMA FARMACEUTICA', style: 'tableHeader', },
-                     //    { text: 'CATEGORIA', style: 'tableHeader', },
-                     //    { text: 'ACTIVIDA DE PRODUCTO', style: 'tableHeader', }
-                     // ]);
 
                      
+                     // Contenido para la cabecera de la tabla
+                     var h:any = [];
+                     fila?.table?.head.map(function (data) {
+                        h.push(
+                           {
+                              text: data.name, 
+                              style: 'tableHeader', 
+                           }
+                        );
+                     });
+                     head.push(h);
+
+                     
+                     // Hacemos la inserccion de los datos que vamos a presentar
+                     // dentro del cuerpo de la tabla
                      fila.table.body.map(function (data) {
                         var r:any = [];
                         fila?.table?.head.map(function (key) {
-                           console.log(data[key.dataKey]);
                            r.push([
                               {
                                  text:data[key.dataKey],
@@ -659,30 +637,41 @@ export class PdfComponent implements OnInit {
                         body.push(r);
                      });
 
+                     /**
+                      * widths:
+                      * 
+                      * elemento arreglo que contendra el total de columnas
+                      * que tendra la tabla, de tal manera que por cada columna
+                      * tendra un '*' que representa a tomar todo el ancho 
+                      * del documento
+                      */
+                     var widths:any = [];
+                     for (var i = 0 ; i < fila.table.head.length; i++) {
+                        widths.push('*');
+                     }
+
+
+
+                     //Retornamos tabla en si 
                      return {
                         table: {
-                           widths: ['*', '*', '*', '*'],
+                           /**
+                           * El  total de ancho que va a tener cada columna
+                           * este ancho es determinado por la cantidad que
+                           * tiene el head de la tabla ya que alli es donde
+                           * almacemaos la data y el datakey de cada columna
+                           **/
+                           widths: [...widths],
+
+                           /**
+                            * El contenido de la tabla.
+                            * 
+                            * donde estara insertada la cabecera y
+                            * el contenido de la tabla
+                            */
                            body: [
-                              //head
-                              [
-                                 {
-                                    text: 'CENTRO DE PRODUCCION',
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: 'FORMA FARMACEUTICA',
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: 'CATEGORIA',
-                                    style: 'tableHeader',
-                                 },
-                                 {
-                                    text: 'ACTIVIDA DE PRODUCTO',
-                                    style: 'tableHeader',
-                                 }
-                              ],
-                              ...body
+                              ...head,
+                              ...body,
                            ],
                         },
                         style: 'table',

@@ -549,10 +549,10 @@ export class Datos {
             {
               table: {
                 head: [
-                  { name: "Name", dataKey: "name" },
-                  { name: "Edad", dataKey: "age" },
-                  { name: "Ciudad", dataKey: "country" },
-                  { name: "Notas", dataKey: "notes" },
+                  { name: "CENTRO DE PRODUCCION", dataKey: "name" },
+                  { name: "FORMA FARMACEUTICA", dataKey: "age" },
+                  { name: "CATEGORIA", dataKey: "country" },
+                  { name: "ACTIVIDA DE PRODUCTO", dataKey: "notes" },
                 ],
                 body: [
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
@@ -562,6 +562,24 @@ export class Datos {
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                ]
+              },
+            },
+            {
+              table: {
+                head: [
+                  { name: "FORMA FARMACEUTICA", dataKey: "age" },
+                  { name: "CATEGORIA", dataKey: "country" },
+                  { name: "ACTIVIDA DE PRODUCTO", dataKey: "notes" },
+                ],
+                body: [
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
+                  { age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },
                 ]
               },
             },
