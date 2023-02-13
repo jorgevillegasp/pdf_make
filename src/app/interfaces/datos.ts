@@ -331,17 +331,17 @@ export class Datos {
                 {
                   typeField: 'text',
                   label: 'Nombre',
-                  value : 'Jorge Washington',
+                  value: 'Jorge Washington',
                 },
                 {
                   typeField: 'text',
                   label: 'Apellido',
-                  value : 'Villegas Polanco',
+                  value: 'Villegas Polanco',
                 },
                 {
                   typeField: 'input',
                   label: 'Apellido',
-                  value : 'Villegas Polanco',
+                  value: 'Villegas Polanco',
                 },
               ],
             },
@@ -358,6 +358,14 @@ export class Datos {
                 {
                   typeField: 'check',
                   label: 'Otros'
+                },
+              ]
+            },
+            {
+              columns: [
+                {
+                  typeField: 'input',
+                  label: 'nombre'
                 },
               ]
             },
@@ -535,13 +543,16 @@ export class Datos {
                 },
               ],
             },
-            
+
             //ESTA ES UNA TABLA DE PRUEBA PARA
             //LAS TABLAS QUE VIENEN CON DATOS  DIFERENTES
             {
               table: {
-                head:[
-                  { name: 'CENTRO DE PRODUCCION', age: 'FORMA FARMACEUTICA', country: 'CATEGORIA', notes: 'ACTIVIDA DE PRODUCTO', }
+                head: [
+                  { name: "Name", dataKey: "name" },
+                  { name: "Edad", dataKey: "age" },
+                  { name: "Ciudad", dataKey: "country" },
+                  { name: "Notas", dataKey: "notes" },
                 ],
                 body: [
                   { name: 'formulario_centro de produccion', age: 'formulario_forma farmaceutica', country: 'formulario_categoria', notes: 'actividad de produccion' },

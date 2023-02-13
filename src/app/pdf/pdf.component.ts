@@ -11,6 +11,14 @@ import { DataTableColumnI } from '../interfaces/pdf3.interface';
 })
 export class PdfComponent implements OnInit {
 
+
+   tableColumns: DataTableColumnI[] = [
+      { name: "Name", dataKey: "name" },
+      { name: "Edad", dataKey: "age" },
+      { name: "Ciudad", dataKey: "country" },
+      { name: "Notas", dataKey: "notes" },
+   ];
+
    constructor() { }
 
    ngOnInit(): void {
@@ -629,21 +637,26 @@ export class PdfComponent implements OnInit {
 
                      var body: any = [];
 
-                     body.push([
-                        { text: fila.table.head[0], style: 'tableHeader', },
-                        { text: fila.table.head[1], style: 'tableHeader', },
-                        { text: fila.table.head[2], style: 'tableHeader', },
-                        { text: fila.table.head[3], style: 'tableHeader', }
-                     ]);
+                     // body.push([
+                     //    { text: 'CENTRO DE PRODUCCION', style: 'tableHeader', },
+                     //    { text: 'FORMA FARMACEUTICA', style: 'tableHeader', },
+                     //    { text: 'CATEGORIA', style: 'tableHeader', },
+                     //    { text: 'ACTIVIDA DE PRODUCTO', style: 'tableHeader', }
+                     // ]);
 
+                     
                      fila.table.body.map(function (data) {
-                        var row = [
-                           { text: data.name, style: 'tableBody', },
-                           { text: data.age, style: 'tableBody', },
-                           { text: data.country, style: 'tableBody', },
-                           { text: data.notes, style: 'tableBody', }
-                        ];
-                        body.push(row);
+                        var r:any = [];
+                        fila?.table?.head.map(function (key) {
+                           console.log(data[key.dataKey]);
+                           r.push([
+                              {
+                                 text:data[key.dataKey],
+                                 style: 'tableBody'
+                              }
+                           ]);
+                        });
+                        body.push(r);
                      });
 
                      return {
@@ -682,11 +695,6 @@ export class PdfComponent implements OnInit {
          ];
       });
    }
-   tableColumns: DataTableColumnI[] = [
-      {name: "Name", dataKey: "nombre"},
-      {name: "Apellido", dataKey: "apellido"},
-   ];
-
    generatePDF() {
 
       var dd: any = {
@@ -825,24 +833,6 @@ export class PdfComponent implements OnInit {
             fontSize: 10,
          }
 
-      }
-
-      var data:any = [
-         { nombre: "John Doe",apellido: 'Pedro', age: 35, country: "USA" }, 
-         
-         { nombre: "Jane Doe", apellido: 'Jorge', age: 30, country: "Canada" }, 
-         { nombre: "Jim Smith", apellido: 'Lucas',  age: 40, country: "UK" }
-      ];
-      var key = "name";
-
-
-      
-
-      for (var i = 0; i < data.length; i++) {
-         this.tableColumns.map(function (key) {
-            let value = data[i][key.dataKey];
-            console.log(value);
-         });
       }
 
       //console.log(JSON.stringify(dd));
