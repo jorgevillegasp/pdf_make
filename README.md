@@ -6,3 +6,9 @@ Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-
 
 ## Uso del paquete de PdfMake
 Documentacion de PDFMAKE (http://pdfmake.org)
+
+## Observaciones
+Dentro podra encontrar ejemplos de su uso, tales como:
+* Mostar un PDF generado con plantilla 
+* PDF tipo formulario de ingreso de datos
+* PDF tipo con sus tablas

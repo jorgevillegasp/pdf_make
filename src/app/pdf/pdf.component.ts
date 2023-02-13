@@ -704,7 +704,7 @@ export class PdfComponent implements OnInit {
          //FONDO DE AGUA
          //aparecera si exite un valor dentro
          watermark: {
-            text: this.data.fondoAgua +' '+ this.data.fechaCreacion,
+            text: this.data.fondoAgua,
             color: '#C0D1EB',
             opacity: 0.5,
             bold: true,

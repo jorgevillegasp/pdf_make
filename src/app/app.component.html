@@ -1,16 +1,22 @@
 <div class="container ">
     <br><br>
     <div class="row">
+        <h3>Producto final</h3>
+        <p>Basado en el PDF que se asigno</p>
+            
         <div class="col">
-            <app-pdf [data]="pdfData3"></app-pdf>
+            <div class="pb-2">Ejemplo del uso de solo inputs</div>
+            <app-pdf [data]="ejemploConInputs"></app-pdf>            
         </div>
 
         <div class="col">
-            <app-shared-pdf2></app-shared-pdf2>
+            <div class="pb-2">Segun el PDF de muestra</div>
+            <app-pdf [data]="formatoPdfDePrueba"></app-pdf>       
         </div>
-    
+
         <div class="col">
-            <app-shared-pdf></app-shared-pdf>
+            <div class="pb-2">Ejemplo del uso de solo tablas</div>
+            <app-pdf [data]="ejemploConTablas"></app-pdf>
         </div>
     </div>
 </div>

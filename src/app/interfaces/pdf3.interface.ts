@@ -32,6 +32,7 @@ export interface Fila {
     //Objeto Table en caso de insertar una tabla
 }
 
+//------------------------------------------------------------------------------
 
 export interface Column {
     typeField?: string; //input | textArea | check | text  
@@ -42,9 +43,15 @@ export interface Column {
 }
 
 
+//------------------------------------------------------------------------------
+
 //en caso de insertar una tabla
 export interface Table {
-    head: any[];
+    /**
+     * Para saber la key para ir recorriendo lo que se encuentra en el
+     * body para mostrarlo ordenadamente como debe de ser
+     */
+    head: DataTableColumnI[];
     body: any[];
 }
 
