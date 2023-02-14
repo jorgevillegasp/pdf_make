@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as pdfMake from "pdfmake/build/pdfmake";
-import { Pdf3 } from '../interfaces/pdf3.interface';
-import { Datos } from '../interfaces/datos';
+import { Pdf } from '../interfaces/pdf.interface';
 
 
 @Component({
@@ -13,7 +12,7 @@ export class PdfComponent implements OnInit {
 
 
 
-   @Input() data!: Pdf3;
+   @Input() data!: Pdf;
 
 
 

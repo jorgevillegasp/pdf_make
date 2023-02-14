@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import * as pdfMake from "pdfmake/build/pdfmake";
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-import { Datos } from './interfaces/datos';
 import { Pdf } from './interfaces/pdf.interface';
-import { Pdf3 } from './interfaces/pdf3.interface';
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 
@@ -16,7 +14,7 @@ export class AppComponent {
 
 	title = 'pdf_make';
 
-	formatoPdfDePrueba: Pdf3 = {
+	formatoPdfDePrueba: Pdf = {
 		codigo: 'BPLFE-000',
 		nombreFactura: 'formulario_nombre de la agencia reguladora',
 		anexo: 'anexo 5',
@@ -204,7 +202,7 @@ export class AppComponent {
 		}
 	}
 
-	ejemploConInputs: Pdf3 = {
+	ejemploConInputs: Pdf = {
 		codigo: 'BPLFE-000',
 		nombreFactura: 'formulario_nombre de la agencia reguladora',
 		anexo: 'anexo 5',
@@ -291,7 +289,7 @@ export class AppComponent {
 		}
 	}
 
-	ejemploConTablas: Pdf3 = {
+	ejemploConTablas: Pdf = {
 		codigo: 'BPLFE-000',
 		nombreFactura: 'formulario_nombre de la agencia reguladora',
 		anexo: 'anexo 5',
